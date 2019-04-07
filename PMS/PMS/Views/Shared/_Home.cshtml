@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .head {
+            padding: 70px;
+            padding-top:50px;
+            background-color: black;
+            width: 100%;
+            color: white;
+
+        }
+        .log {
+            float: right;
+        }
+        .log a{
+            text-decoration:none;
+        }
+        .log a:hover {
+            color:chartreuse;
+        }
+        .log2{
+            float:left;
+            margin-top:-17px
+        }
+        .log2 a{
+            text-decoration:none;
+           
+           font-size:36px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="log2"><a href="#">Lights</a></div>
+        <div class="log">
+        <a href="#">Login</a> | <a href="#">Sign Up</a>
+        </div>
+        
+    </div>
+    <button class="w3-button w3-xlarge w3-right" style="background-color:transparent" onclick="openRightMenu()">&#9776;</button>
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">&#9776;</button>
+        <a href="#" class="w3-bar-item w3-button">Home</a>
+        <a href="#" class="w3-bar-item w3-button">Contact</a>
+        <a href="#" class="w3-bar-item w3-button">About</a>
+    </div>
+    <div>
+        @RenderBody()
+        <hr />
+        <footer style="text-align:center">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script>
+
+        function openRightMenu() {
+            document.getElementById("rightMenu").style.display = "block";
+        }
+
+        function closeRightMenu() {
+            document.getElementById("rightMenu").style.display = "none";
+        }
+    </script>
+</body>
+</html>
