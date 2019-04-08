@@ -22,11 +22,9 @@ namespace PMS.Models
         }
     
         public int id { get; set; }
-        [Display(Name = "Name")]
         public string name { get; set; }
-        [Display(Name = "Description")]
         public string descrption { get; set; }
-        [Display(Name="Author")]
+        [Display(Name ="Author")]
         public string cust_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
