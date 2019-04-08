@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pmsEcommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CreateProject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pro_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="strt_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="stat" Type="int" />
+          <Property Name="price" Type="float" />
+          <Property Name="leader_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="team_id" Type="int" />
+        </EntityType>
+        <EntityType Name="notfication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" />
+          <Property Name="dscrption" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="descrption" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="projectAssign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="proId" Type="int" />
+          <Property Name="usrId" Type="int" />
+        </EntityType>
+        <EntityType Name="qualifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usrId" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lderId" Type="int" />
+          <Property Name="memId" Type="int" />
+          <Property Name="tem_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="leader_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="frst_mem" Type="nvarchar" MaxLength="50" />
+          <Property Name="sec_mem" Type="nvarchar" MaxLength="50" />
+          <Property Name="thir_mem" Type="nvarchar" MaxLength="50" />
+          <Property Name="four_mem" Type="nvarchar" MaxLength="50" />
+          <Property Name="five_mem" Type="nvarchar" MaxLength="50" />
+          <Property Name="six_mem" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typId" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="photo" Type="nvarchar" MaxLength="200" />
+          <Property Name="experience" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="userType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="typ" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__CreatePro__team___21B6055D">
+          <End Role="team" Type="Self.team" Multiplicity="0..1" />
+          <End Role="CreateProject" Type="Self.CreateProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="team">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CreateProject">
+              <PropertyRef Name="team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__projectAs__proId__1A14E395">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projectAssign">
+              <PropertyRef Name="proId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__projectAs__usrId__1B0907CE">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projectAssign">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__qualifica__usrId__15502E78">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="qualifications" Type="Self.qualifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="qualifications">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__team__lderId__1DE57479">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="team" Type="Self.team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="team">
+              <PropertyRef Name="lderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__team__memId__1ED998B2">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="team" Type="Self.team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="team">
+              <PropertyRef Name="memId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__typId__1273C1CD">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="typId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pmsEcommerceModelStoreContainer">
+          <EntitySet Name="CreateProject" EntityType="Self.CreateProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notfication" EntityType="Self.notfication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projectAssign" EntityType="Self.projectAssign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="qualifications" EntityType="Self.qualifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userType" EntityType="Self.userType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CreatePro__team___21B6055D" Association="Self.FK__CreatePro__team___21B6055D">
+            <End Role="team" EntitySet="team" />
+            <End Role="CreateProject" EntitySet="CreateProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__projectAs__proId__1A14E395" Association="Self.FK__projectAs__proId__1A14E395">
+            <End Role="project" EntitySet="project" />
+            <End Role="projectAssign" EntitySet="projectAssign" />
+          </AssociationSet>
+          <AssociationSet Name="FK__projectAs__usrId__1B0907CE" Association="Self.FK__projectAs__usrId__1B0907CE">
+            <End Role="users" EntitySet="users" />
+            <End Role="projectAssign" EntitySet="projectAssign" />
+          </AssociationSet>
+          <AssociationSet Name="FK__qualifica__usrId__15502E78" Association="Self.FK__qualifica__usrId__15502E78">
+            <End Role="users" EntitySet="users" />
+            <End Role="qualifications" EntitySet="qualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__lderId__1DE57479" Association="Self.FK__team__lderId__1DE57479">
+            <End Role="userType" EntitySet="userType" />
+            <End Role="team" EntitySet="team" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__memId__1ED998B2" Association="Self.FK__team__memId__1ED998B2">
+            <End Role="userType" EntitySet="userType" />
+            <End Role="team" EntitySet="team" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__typId__1273C1CD" Association="Self.FK__users__typId__1273C1CD">
+            <End Role="userType" EntitySet="userType" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pmsEcommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CreateProject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pro_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="strt_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="stat" Type="Int32" />
+          <Property Name="price" Type="Double" />
+          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="team_id" Type="Int32" />
+          <NavigationProperty Name="team" Relationship="Self.FK__CreatePro__team___21B6055D" FromRole="CreateProject" ToRole="team" />
+        </EntityType>
+        <EntityType Name="notfication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dscrption" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descrption" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="projectAssigns" Relationship="Self.FK__projectAs__proId__1A14E395" FromRole="project" ToRole="projectAssign" />
+        </EntityType>
+        <EntityType Name="projectAssign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="proId" Type="Int32" />
+          <Property Name="usrId" Type="Int32" />
+          <NavigationProperty Name="project" Relationship="Self.FK__projectAs__proId__1A14E395" FromRole="projectAssign" ToRole="project" />
+          <NavigationProperty Name="user" Relationship="Self.FK__projectAs__usrId__1B0907CE" FromRole="projectAssign" ToRole="users" />
+        </EntityType>
+        <EntityType Name="qualification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usrId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__qualifica__usrId__15502E78" FromRole="qualifications" ToRole="users" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lderId" Type="Int32" />
+          <Property Name="memId" Type="Int32" />
+          <Property Name="tem_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="frst_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sec_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="thir_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="four_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="five_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="six_mem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CreateProjects" Relationship="Self.FK__CreatePro__team___21B6055D" FromRole="team" ToRole="CreateProject" />
+          <NavigationProperty Name="userType" Relationship="Self.FK__team__lderId__1DE57479" FromRole="team" ToRole="userType" />
+          <NavigationProperty Name="userType1" Relationship="Self.FK__team__memId__1ED998B2" FromRole="team" ToRole="userType" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="projectAssigns" Relationship="Self.FK__projectAs__usrId__1B0907CE" FromRole="users" ToRole="projectAssign" />
+          <NavigationProperty Name="qualifications" Relationship="Self.FK__qualifica__usrId__15502E78" FromRole="users" ToRole="qualifications" />
+          <NavigationProperty Name="userType" Relationship="Self.FK__users__typId__1273C1CD" FromRole="users" ToRole="userType" />
+        </EntityType>
+        <EntityType Name="userType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="teams" Relationship="Self.FK__team__lderId__1DE57479" FromRole="userType" ToRole="team" />
+          <NavigationProperty Name="teams1" Relationship="Self.FK__team__memId__1ED998B2" FromRole="userType" ToRole="team" />
+          <NavigationProperty Name="users" Relationship="Self.FK__users__typId__1273C1CD" FromRole="userType" ToRole="users" />
+        </EntityType>
+        <Association Name="FK__CreatePro__team___21B6055D">
+          <End Role="team" Type="Self.team" Multiplicity="0..1" />
+          <End Role="CreateProject" Type="Self.CreateProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="team">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CreateProject">
+              <PropertyRef Name="team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__projectAs__proId__1A14E395">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projectAssign">
+              <PropertyRef Name="proId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__projectAs__usrId__1B0907CE">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projectAssign">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__qualifica__usrId__15502E78">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="qualifications" Type="Self.qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="qualifications">
+              <PropertyRef Name="usrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__team__lderId__1DE57479">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="team" Type="Self.team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="team">
+              <PropertyRef Name="lderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__team__memId__1ED998B2">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="team" Type="Self.team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="team">
+              <PropertyRef Name="memId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__typId__1273C1CD">
+          <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="typId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pmsEcommerceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CreateProjects" EntityType="Self.CreateProject" />
+          <EntitySet Name="notfications" EntityType="Self.notfication" />
+          <EntitySet Name="projects" EntityType="Self.project" />
+          <EntitySet Name="projectAssigns" EntityType="Self.projectAssign" />
+          <EntitySet Name="qualifications" EntityType="Self.qualification" />
+          <EntitySet Name="teams" EntityType="Self.team" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="userTypes" EntityType="Self.userType" />
+          <AssociationSet Name="FK__CreatePro__team___21B6055D" Association="Self.FK__CreatePro__team___21B6055D">
+            <End Role="team" EntitySet="teams" />
+            <End Role="CreateProject" EntitySet="CreateProjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__projectAs__proId__1A14E395" Association="Self.FK__projectAs__proId__1A14E395">
+            <End Role="project" EntitySet="projects" />
+            <End Role="projectAssign" EntitySet="projectAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__projectAs__usrId__1B0907CE" Association="Self.FK__projectAs__usrId__1B0907CE">
+            <End Role="users" EntitySet="users" />
+            <End Role="projectAssign" EntitySet="projectAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__qualifica__usrId__15502E78" Association="Self.FK__qualifica__usrId__15502E78">
+            <End Role="users" EntitySet="users" />
+            <End Role="qualifications" EntitySet="qualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__lderId__1DE57479" Association="Self.FK__team__lderId__1DE57479">
+            <End Role="userType" EntitySet="userTypes" />
+            <End Role="team" EntitySet="teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__memId__1ED998B2" Association="Self.FK__team__memId__1ED998B2">
+            <End Role="userType" EntitySet="userTypes" />
+            <End Role="team" EntitySet="teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__typId__1273C1CD" Association="Self.FK__users__typId__1273C1CD">
+            <End Role="userType" EntitySet="userTypes" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pmsEcommerceModelStoreContainer" CdmEntityContainer="pmsEcommerceEntities">
+          <EntitySetMapping Name="CreateProjects">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.CreateProject">
+              <MappingFragment StoreEntitySet="CreateProject">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pro_name" ColumnName="pro_name" />
+                <ScalarProperty Name="strt_date" ColumnName="strt_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="stat" ColumnName="stat" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="leader_name" ColumnName="leader_name" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notfications">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.notfication">
+              <MappingFragment StoreEntitySet="notfication">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dscrption" ColumnName="dscrption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.project">
+              <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="descrption" ColumnName="descrption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectAssigns">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.projectAssign">
+              <MappingFragment StoreEntitySet="projectAssign">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="proId" ColumnName="proId" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qualifications">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.qualification">
+              <MappingFragment StoreEntitySet="qualifications">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usrId" ColumnName="usrId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teams">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.team">
+              <MappingFragment StoreEntitySet="team">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lderId" ColumnName="lderId" />
+                <ScalarProperty Name="memId" ColumnName="memId" />
+                <ScalarProperty Name="tem_name" ColumnName="tem_name" />
+                <ScalarProperty Name="leader_name" ColumnName="leader_name" />
+                <ScalarProperty Name="frst_mem" ColumnName="frst_mem" />
+                <ScalarProperty Name="sec_mem" ColumnName="sec_mem" />
+                <ScalarProperty Name="thir_mem" ColumnName="thir_mem" />
+                <ScalarProperty Name="four_mem" ColumnName="four_mem" />
+                <ScalarProperty Name="five_mem" ColumnName="five_mem" />
+                <ScalarProperty Name="six_mem" ColumnName="six_mem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typId" ColumnName="typId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userTypes">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.userType">
+              <MappingFragment StoreEntitySet="userType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

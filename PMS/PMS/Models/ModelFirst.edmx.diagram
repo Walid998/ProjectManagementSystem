@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0491b6425abc4fe9b6cbb845137e534e" Name="Diagram1">
+        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.projectAssign" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.qualification" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.user" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.userType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__team___21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__proId__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrId__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrId__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderId__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__memId__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__users__typId__1273C1CD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
