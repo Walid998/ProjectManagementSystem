@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PMS.Models.team>
+
+@{
+    ViewBag.Title = "ListTeam";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+<h2>ListTeam</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tem_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.frst_mem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sec_mem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thir_mem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.four_mem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.five_mem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.six_mem)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tem_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leader_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frst_mem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sec_mem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thir_mem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.four_mem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.five_mem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.six_mem)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
