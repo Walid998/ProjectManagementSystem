@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<PMS.Models.team>
 
 @{
-    ViewBag.Title = "ListTeam";
+    ViewBag.Title = "All Teams";
     Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
 }
 
 <h2>ListTeam</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create Team", "add_team")
 </p>
 <table class="table">
     <tr>
@@ -68,7 +68,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Delete", "Deleteteam", new { id=item.id })
         </td>
     </tr>
 }

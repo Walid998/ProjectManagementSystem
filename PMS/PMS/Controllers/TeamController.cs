@@ -32,7 +32,7 @@ namespace PMS.Controllers
         {
             db.teams.Add(o);
             db.SaveChanges();
-            return RedirectToAction("getTeams");
+            return RedirectToAction("ListTeam");
         }
         [HttpGet]
         public ActionResult Details(int id)
