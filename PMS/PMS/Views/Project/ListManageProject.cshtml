@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PMS.Models.CreateProject>
+
+@{
+    ViewBag.Title = "ListManageProject";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>ListManageProject</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pro_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strt_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.end_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team.tem_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pro_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strt_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.end_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leader_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team.tem_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details_project", new { id=item.id }) |
+            @Html.ActionLink("Delete", "DeleteManageProject", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

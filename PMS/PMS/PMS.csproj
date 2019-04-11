@@ -320,6 +320,11 @@
     <Content Include="Views\Users\ListAllUsers.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Project\DeleteManageProject.cshtml" />
+    <Content Include="Views\Project\Details_project.cshtml" />
+    <Content Include="Views\Project\manage_project.cshtml" />
+    <Content Include="Views\Project\ListManageProject.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

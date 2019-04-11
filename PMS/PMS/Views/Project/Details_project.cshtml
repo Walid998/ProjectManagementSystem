@@ -1,0 +1,75 @@
+﻿@model PMS.Models.CreateProject
+
+@{
+    ViewBag.Title = "Details_project";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>Details_project</h2>
+
+<div>
+    <h4>CreateProject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pro_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pro_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strt_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strt_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leader_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.team.tem_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.team.tem_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "ListManageProject")
+</p>
