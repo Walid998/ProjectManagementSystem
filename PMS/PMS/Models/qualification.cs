@@ -15,7 +15,7 @@ namespace PMS.Models
     public partial class qualification
     {
         public int id { get; set; }
-        public Nullable<int> usrId { get; set; }
+        public string usrname { get; set; }
         public string name { get; set; }
     
         public virtual user user { get; set; }

@@ -8,6 +8,7 @@ namespace PMS.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles ="admin")]
         public ActionResult Index()
         {
             return View();

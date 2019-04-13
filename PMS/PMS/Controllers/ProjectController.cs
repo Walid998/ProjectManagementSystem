@@ -11,7 +11,7 @@ namespace PMS.Controllers
 {
     public class ProjectController : Controller
     {
-        pmsEcommerceEntities db = new pmsEcommerceEntities();
+        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: Project
         public ActionResult ListProjects()
         {

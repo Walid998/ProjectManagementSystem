@@ -16,7 +16,7 @@ namespace PMS.Models
     {
         public int id { get; set; }
         public Nullable<int> proId { get; set; }
-        public Nullable<int> usrId { get; set; }
+        public string usrname { get; set; }
     
         public virtual project project { get; set; }
         public virtual user user { get; set; }

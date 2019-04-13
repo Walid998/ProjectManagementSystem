@@ -9,7 +9,7 @@ namespace PMS.Controllers
 {
     public class TeamController : Controller
     {
-        pmsEcommerceEntities db = new pmsEcommerceEntities();
+        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: team
         
         public ActionResult add_team()

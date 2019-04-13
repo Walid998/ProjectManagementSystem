@@ -13,10 +13,10 @@ namespace PMS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pmsEcommerceEntities : DbContext
+    public partial class pmsEcommerceEntities1 : DbContext
     {
-        public pmsEcommerceEntities()
-            : base("name=pmsEcommerceEntities")
+        public pmsEcommerceEntities1()
+            : base("name=pmsEcommerceEntities1")
         {
         }
     

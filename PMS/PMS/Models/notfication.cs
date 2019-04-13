@@ -17,5 +17,8 @@ namespace PMS.Models
         public int id { get; set; }
         public string name { get; set; }
         public string dscrption { get; set; }
+        public string usrname { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }
