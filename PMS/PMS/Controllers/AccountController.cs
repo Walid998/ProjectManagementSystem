@@ -12,6 +12,10 @@ namespace PMS.Controllers
     {
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: Account
+        public ActionResult Index()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             return View();
@@ -34,7 +38,7 @@ namespace PMS.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index","Home");
+                        return RedirectToAction("~/Home/Index");
                     }
                 }
                 else

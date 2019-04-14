@@ -22,11 +22,56 @@
             margin: 10px;
             text-align:center;
         }
-        
+
+        .head {
+            padding: 60px;
+            padding-top: 50px;
+            background-color: black;
+            width: 100%;
+            color: white;
+        }
+
+        .log {
+            float: right;
+            margin-right: -20px;
+            margin-top: -10px
+        }
+
+            .log a {
+                text-decoration: none;
+            }
+
+                .log a:hover {
+                    color: chartreuse;
+                }
+
+        .log2 {
+            float: left;
+            margin-top: -17px
+        }
+
+            .log2 a {
+                text-decoration: none;
+                font-size: 36px;
+            }
+
+        .head ul {
+            list-style: none;
+        }
+
+            .head ul li {
+                display: inline-block;
+                font-size: 14px
+            }
     </style>
 </head>
 <body>
-    <div style="height: 50px; padding: 50px;background-color:black; width:100% ;color:white"><h2 style="text-align:center">Hello World</h2></div>
+    <div class="head">
+        <div class="log2"><a href="#">Lights</a></div>
+        <div class="log">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:0px">
         <div class="container-fluid">
 
@@ -86,17 +131,17 @@
                 <li>
                     <i class="fas fa-copy"></i>
                     Job
-                   
+
                 </li>
                 <li>
                     <!--<a href="#">
-            <i class="fas fa-image"></i>
-            Portfolio
-        </a>-->
+                        <i class="fas fa-image"></i>
+                        Portfolio
+                    </a>-->
 
             </ul>
 
-            
+
         </nav>
 
         <div id="content">
@@ -114,7 +159,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        
+
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');

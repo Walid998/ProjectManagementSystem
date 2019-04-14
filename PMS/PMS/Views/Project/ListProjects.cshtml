@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PMS.Models.project>
+
+@{
+    ViewBag.Title = "ListProjects";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+
+<h2 id="add">Add Project</h2>
+@Html.Partial("AddProject")
+<br />
+<hr />
+
+<h2>ListProjects</h2>
+<p>
+    <a href="#add" >Create New</a>
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrption)
+        </th>
+     
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descrption)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

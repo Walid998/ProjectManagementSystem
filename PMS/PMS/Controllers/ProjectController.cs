@@ -13,9 +13,11 @@ namespace PMS.Controllers
     {
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: Project
+        
+        [Authorize(Roles ="admin,MD,MTL,TL,customer")]
         public ActionResult ListProjects()
         {
-            var pros = getProjects();
+            var pros = getProjects().Where(x => x.usrname.Equals(User.Identity.Name));
             return View(pros);
         }
         public IEnumerable<project> getProjects()
@@ -23,7 +25,9 @@ namespace PMS.Controllers
             var pros = db.projects.ToList();
             return pros;
         }
+
         [HttpGet]
+        [Authorize(Roles = "customer")]
         public ActionResult AddProject()
         {
             return View();
