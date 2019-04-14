@@ -26,5 +26,6 @@ namespace PMS.Models
     
         public virtual team team { get; set; }
         public virtual user user { get; set; }
+        public static List<CreateProject> Model = new List<CreateProject>();
     }
 }
