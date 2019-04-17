@@ -27,5 +27,24 @@ namespace PMS.Controllers
 
             return View();
         }
+
+
+
+        /*                      TEST LAYOUTS                        */
+        public ActionResult Lay_Admin()
+        {
+
+            return View();
+        }
+        public ActionResult Lay_Trainee()
+        {
+
+            return View();
+        }
+        public ActionResult Lay_Home()
+        {
+
+            return View();
+        }
     }
 }
