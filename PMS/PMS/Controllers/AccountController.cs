@@ -52,7 +52,18 @@ namespace PMS.Controllers
                 return Content("<script language='javascript' type='text/javascript'>alert('Invalid username or password!');window.location.replace('Login');</script>");
             }
         }
-
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(user reg,string name)
+        {
+            reg.Role = "customer";
+            db.users.Add(reg);
+            db.SaveChanges();
+            return View("Index");
+        }
         [Authorize]
         public ActionResult SignOut()
         {

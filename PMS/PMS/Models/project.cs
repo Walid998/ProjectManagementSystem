@@ -11,8 +11,7 @@ namespace PMS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +22,6 @@ namespace PMS.Models
     
         public int id { get; set; }
         public string cust_name { get; set; }
-        [Display(Name ="Project Name")]
         public string name { get; set; }
         public string descrption { get; set; }
         public string usrname { get; set; }

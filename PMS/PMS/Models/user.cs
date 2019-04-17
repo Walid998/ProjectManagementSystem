@@ -35,6 +35,7 @@ namespace PMS.Models
         public string email { get; set; }
         public string photo { get; set; }
         public string experience { get; set; }
+        public int projectno { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreateProject> CreateProjects { get; set; }
