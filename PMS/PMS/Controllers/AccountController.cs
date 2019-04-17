@@ -38,7 +38,7 @@ namespace PMS.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("~/Home/Index");
+                        return RedirectToAction("Index","Home");
                     }
                 }
                 else

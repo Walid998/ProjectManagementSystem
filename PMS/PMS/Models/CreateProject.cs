@@ -24,7 +24,6 @@ namespace PMS.Models
         public Nullable<int> team_id { get; set; }
         public string usrname { get; set; }
     
-        public virtual team team { get; set; }
         public virtual user user { get; set; }
     }
 }
