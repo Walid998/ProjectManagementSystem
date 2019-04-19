@@ -141,6 +141,7 @@
     <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\DMController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MTL_MT_HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
@@ -271,6 +272,7 @@
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\DM\Index.cshtml" />
     <Content Include="Views\DM\Delete.cshtml" />
+    <Content Include="Views\MTL_MT_Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,7 +13,7 @@ namespace PMS.Controllers
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
 
         // GET: DM
-        
+        [Authorize(Roles = "MD")]
         public ActionResult Index()
         {           
             var projects = db.projects.Where(x => x.usrname.Equals(User.Identity.Name)).ToList();
