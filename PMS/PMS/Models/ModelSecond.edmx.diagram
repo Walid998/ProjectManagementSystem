@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6fd799df53bc4c9f948fb9b859bfdb10" Name="Diagram1" ZoomLevel="94">
+      <Diagram DiagramId="6fd799df53bc4c9f948fb9b859bfdb10" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
@@ -20,9 +20,9 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrna__6383C8BA" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__60A75C0F" ManuallyRouted="false" />
         <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="5.25" PointY="3.5" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__02FC7413" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__03F0984C" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__160F4887" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__17036CC0" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__17F790F9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
