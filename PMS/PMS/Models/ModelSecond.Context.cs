@@ -25,13 +25,13 @@ namespace PMS.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CreateProject> CreateProjects { get; set; }
         public virtual DbSet<notfication> notfications { get; set; }
         public virtual DbSet<project> projects { get; set; }
+        public virtual DbSet<projectAssign> projectAssigns { get; set; }
         public virtual DbSet<qualification> qualifications { get; set; }
-        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<userType> userTypes { get; set; }
         public virtual DbSet<team> teams { get; set; }
-        public virtual DbSet<projectAssign> projectAssigns { get; set; }
+        public virtual DbSet<CreateProject> CreateProjects { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }
