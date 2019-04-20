@@ -263,6 +263,7 @@
     <Content Include="Views\Home\Lay_Admin.cshtml" />
     <Content Include="Views\Home\Lay_Trainee.cshtml" />
     <Content Include="Views\Home\Lay_Home.cshtml" />
+    <Content Include="Views\Project\List_dm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

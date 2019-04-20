@@ -6,7 +6,7 @@
             @Html.ActionLink("Hello " + User.Identity.Name +" "+ " ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
 
-        <li style="display:inline-block"><a href="@Url.Action("SignOut","Account")">| Log off</a></li>
+        <li style="display:inline-block"><a href="@Url.Action("SignOut","Account")"> | Log off</a></li>
     </ul>
 
 }
@@ -18,7 +18,7 @@ else
             <a href="@Url.Action("Login","Account")">Login </a>
         </li>
 
-        <li><a href="@Url.Action("#","#")">| Sign Up</a></li>
+        <li><a href="@Url.Action("Register","Account")">| Sign Up</a></li>
     </ul>
 }
 

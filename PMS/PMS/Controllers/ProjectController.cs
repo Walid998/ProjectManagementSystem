@@ -145,6 +145,18 @@ namespace PMS.Controllers
             }
             return View(Update);
         }
-        
+
+        /*================================== YOUNIS WORK ================================ */
+        public ActionResult List_dm()
+        {
+            var model = getDm().Where(x => x.Role == "MD");
+            return View(model);
+        }
+        public IEnumerable<user> getDm()
+        {
+            var usr = db.users.ToList();
+            return usr;
+        }
+
     }
 }
