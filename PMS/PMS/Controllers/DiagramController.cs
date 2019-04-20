@@ -20,12 +20,12 @@ namespace PMS.Controllers
 
         public ActionResult GetData()
         {
-            user y = db.users.Single(x => x.Username.Equals(User.Identity.Name));
-            int number =y.projectno;
+            int y = db.users.Where(x => x.Username.Equals(User.Identity.Name)).Count();
+           // int number =y.projectno;
             int q = db.qualifications.Where(x => x.usrname.Equals(User.Identity.Name)).Count();
            
             Ratio R = new Ratio();
-            R.projectno = number;
+            R.projectno = y;
             R.qualification = q;
             return Json(R, JsonRequestBehavior.AllowGet);
         }

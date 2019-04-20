@@ -1,0 +1,35 @@
+﻿@model PMS.Models.team
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leader_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("information", "Details", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "ListTeam")
+</p>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PMS.Models.team>
+
+@{
+    ViewBag.Title = "ListTeam";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>ListTeam</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.leader_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Deleteteam", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

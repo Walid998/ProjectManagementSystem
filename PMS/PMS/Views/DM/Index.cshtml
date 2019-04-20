@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PMS.Models.project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h3>Current Projects</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cust_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrption)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.stat == "doing")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cust_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descrption)
+                </td>
+          
+
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<br />
+<br />
+
+
+<h3>History Projects</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cust_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrption)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.stat == "done")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cust_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descrption)
+                </td>
+              
+            </tr>
+        }
+    }
+</table>

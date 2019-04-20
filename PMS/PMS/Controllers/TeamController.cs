@@ -1,7 +1,9 @@
 ﻿using PMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,6 +47,7 @@ namespace PMS.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "MTL")]
         public ActionResult Deleteteam(int id)
         {
             var t = getTeams().SingleOrDefault(y => y.id == id);
@@ -57,6 +60,47 @@ namespace PMS.Controllers
             db.teams.Remove(t);
             db.SaveChanges();
             return RedirectToAction("ListTeam");
+        }
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            team t = db.teams.Find(id);
+            if (t == null)
+            {
+                return HttpNotFound();
+            }
+            return View(t);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTeam(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var Update = db.teams.Find(id);
+            if (TryUpdateModel(Update, "",
+               new string[] { "leader_name","member_name" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("ListTeam");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(Update);
         }
 
     }
