@@ -201,8 +201,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\ModelSecond.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelSecond.Context.cs</LastGenOutput>
       <DependentUpon>ModelSecond.edmx</DependentUpon>
+      <LastGenOutput>ModelSecond.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModelSecond.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
