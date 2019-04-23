@@ -1,10 +1,13 @@
-﻿@model IEnumerable<PMS.Models.user>
+﻿@model PMS.Models.ProjectAssignment
 
 @{
     ViewBag.Title = "List_dm";
     Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
 }
 
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <h2>List_dm</h2>
 
 <p>
@@ -13,64 +16,61 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.id)
+            @Html.DisplayNameFor(x => x.project.cust_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.project.name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phone)
+            @Html.DisplayNameFor(model => model.project.descrption)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.project.stat)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.experience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.projectno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.userType.typ)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.experience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.projectno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userType.typ)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Username }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Username }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Username })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.projects)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cust_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descrption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stat)
+            </td>
+            <td>
+                @using (Html.BeginForm("AssignMD", "Project", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.DropDownListFor(m => m.projectAs.name_dm, new SelectList(Model.mds, "Username", "Username"), "Choose MD", new {@Name="name_dm", @class = "form-control" })
+                    <input type="text" name="proId" value="@item.id"  hidden/>
+                    <input type="text" name="usrname" value="@HttpContext.Current.User.Identity.Name" hidden />
+                    <input type="submit" value="Add" class="btn btn-default"/>
+                    
+                }
+                @Ajax.ActionLink("Mdir","Mdir", new { id=item.id } ,new AjaxOptions()
+           {
+
+               HttpMethod= "GET",
+               UpdateTargetId = "divMDs",
+               InsertionMode= InsertionMode.Replace
+
+           })
+                <div id="divMDs"></div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

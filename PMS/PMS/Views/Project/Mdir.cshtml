@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PMS.Models.projectAssign>
+
+
+<table class="table">
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name_dm) 
+            
+        </td>
+        <td>
+            <p style="color:forestgreen;font-size:12px">Assigned</p>
+        </td>
+       
+    </tr>
+}
+
+</table>

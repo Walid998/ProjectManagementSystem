@@ -158,17 +158,35 @@ namespace PMS.Controllers
         /*================================== YOUNIS WORK ================================ */
         public ActionResult List_dm()
         {
-            var model = getDm().Where(x => x.Role == "MD");
-            return View(model);
+            var md = getDm().Where(x => x.Role == "MD");
+            var pros = db.projects.ToList();
+            ProjectAssignment PA = new ProjectAssignment {
+                mds = md,
+                projects =pros
+            };
+            return View(PA);
         }
         public IEnumerable<user> getDm()
         {
             var usr = db.users.ToList();
             return usr;
         }
-        
+        [HttpGet]
+        public PartialViewResult Mdir(int id)
+        {
+            var mds =  db.projectAssigns.ToList().Where(x=>x.proId==id);
+
+            return PartialView("Mdir",mds);
+        }
+        [HttpPost]
+        public ActionResult AssignMD(projectAssign pa)
+        {
+            db.projectAssigns.Add(pa);
+            db.SaveChanges();
+
+            return RedirectToAction("List_dm");
+        }
 
 
-
-    }
+        }
 }
