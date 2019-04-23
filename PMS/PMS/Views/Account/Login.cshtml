@@ -1,47 +1,76 @@
 ﻿@model PMS.Models.user
 
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Home.cshtml";
+    Layout = null;
 }
 @if (!User.Identity.Name.Equals(""))
 {
-    <script>window.location.replace('Index','Home');</script>
+    <script>window.location.replace('Index', 'Home');</script>
 }
-<h2>Login</h2>
+<!--
+    Author: W3layouts
+    Author URL: http://w3layouts.com
+    License: Creative Commons Attribution 3.0 Unported
+    License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PMS</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="PMS" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="/design_login/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!--//online-fonts -->
+</head>
+<body>
+    <!--header-->
+    <div class="agileheader">
+        <h1>PMS Login Form</h1>
+    </div>
+    <div class="main-w3l">
+        <div class="w3layouts-main">
+            <h2>Login form</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.ValidationSummary(true, " ", new { @class = " text-danger" })
+                <div class="form-group">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                    @Html.TextBoxFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "username", @type = "text" })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+
+                    @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "password", @type = "password" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+
+                </div>
+                <h6><a href="#">Forgot Password?</a></h6>
+                <div class="clear"></div>
+                <input type="submit" value="login" name="login">
+                <h6><a href="#">create account</a></h6>
+            }
+
+            <!--//header-->
         </div>
     </div>
-}
+    <!--main-->
+    <div class="footer-w3l">
+    </div>
+    <!--//footer-->
 
-<p>
-    @Html.ActionLink("Create an Account", "Index")
-</p>
+</body>
+</html>
