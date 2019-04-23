@@ -222,6 +222,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebr.css" />
+    <Content Include="design_login\css\style.css" />
+    <Content Include="design_login\images\arrow.png" />
+    <Content Include="design_login\images\bg3.jpg" />
+    <Content Include="design_login\images\mail.png" />
+    <Content Include="design_login\images\pass.png" />
+    <Content Include="design_login\index.html" />
+    <Content Include="design_login\w3layouts-License.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -290,7 +297,6 @@
     <Content Include="Views\Project\AddProject.cshtml" />
     <Content Include="Views\Project\ListProjects.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Diagram\Index.cshtml" />
     <Content Include="Views\Home\Lay_Admin.cshtml" />
@@ -309,6 +315,7 @@
     <Content Include="Views\Notification\Test.cshtml" />
     <Content Include="Views\Project\TestNoti.cshtml" />
     <Content Include="Views\Project\TestNotiDeleteProject.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Project\List_dm.cshtml" />
     <Content Include="Views\Project\Mdir.cshtml" />
   </ItemGroup>
