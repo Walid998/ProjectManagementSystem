@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PMS.Models.project>
+
+@{
+    ViewBag.Title = "TestNoti";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>TestNoti</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cust_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stat)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cust_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stat)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Delete", "TestNotiDeleteProject", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -56,6 +56,15 @@
           <Property Name="usrname" Type="nvarchar" MaxLength="50" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="Message" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraColumn" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="team">
           <Key>
             <PropertyRef Name="id" />
@@ -213,6 +222,7 @@
           <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="projectAssign" EntityType="Self.projectAssign" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="qualifications" EntityType="Self.qualifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Notification" EntityType="Self.tbl_Notification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userType" EntityType="Self.userType" Schema="dbo" store:Type="Tables" />
@@ -520,6 +530,7 @@
             <End Role="userType" EntitySet="userTypes" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
+          <EntitySet Name="tbl_Notification" EntityType="pmsEcommerceModel.tbl_Notification" />
         </EntityContainer>
         <Association Name="FK__users__Role__3A4CA8FD">
           <End Type="pmsEcommerceModel.userType" Role="userType" Multiplicity="0..1" />
@@ -533,6 +544,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraColumn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -626,6 +646,16 @@
               <MappingFragment StoreEntitySet="userType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typ" ColumnName="typ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Notification">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.tbl_Notification">
+              <MappingFragment StoreEntitySet="tbl_Notification">
+                <ScalarProperty Name="ExtraColumn" ColumnName="ExtraColumn" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

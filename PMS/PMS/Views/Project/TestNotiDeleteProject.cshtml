@@ -1,0 +1,65 @@
+﻿@model PMS.Models.project
+
+@{
+    ViewBag.Title = "TestNotiDeleteProject";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<h2>TestNotiDeleteProject</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cust_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cust_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descrption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.Role)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("TestNotiDeleteProject", "Project",FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+       
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "TestNoti")
+        </div>
+    }
+</div>

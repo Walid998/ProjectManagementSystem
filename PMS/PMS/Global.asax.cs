@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +17,10 @@ namespace PMS
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            SqlDependency.Start(@"data source=DESKTOP-EOBV2JQ\SQLEXPRESS;initial catalog=pmsEcommerce;integrated security=True");
+
         }
+
     }
 }

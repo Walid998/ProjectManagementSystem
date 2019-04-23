@@ -33,5 +33,6 @@ namespace PMS.Models
         public virtual DbSet<team> teams { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<userType> userTypes { get; set; }
+        public virtual DbSet<tbl_Notification> tbl_Notification { get; set; }
     }
 }

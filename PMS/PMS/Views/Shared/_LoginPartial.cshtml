@@ -1,9 +1,16 @@
 ﻿@if (Request.IsAuthenticated)
 {
-
-    <ul >
+    <style>
+    </style>
+    <ul>
         <li style="display:inline-block">
-            @Html.ActionLink("Hello " + User.Identity.Name +" "+ " ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <div class="notification-icon" style="margin-top:10px">
+                <i class="material-icons" style="font-size:24px;color:red">notifications_active</i>
+                <span class="badge badge-danger" style="background-color:red;font-size:10px" id="ntCnt"></span>
+            </div>
+        </li>
+        <li style="display:inline-block">
+            @Html.ActionLink("Hello " + User.Identity.Name + " " + " ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
 
         <li style="display:inline-block"><a href="@Url.Action("SignOut","Account")"> | Log off</a></li>
@@ -12,8 +19,8 @@
 }
 else
 {
-      
-    <ul >
+
+    <ul>
         <li>
             <a href="@Url.Action("Login","Account")">Login </a>
         </li>
@@ -22,3 +29,58 @@ else
     </ul>
 }
 
+
+<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+<script src="~/signalr/Hubs/"></script>
+
+<script>
+        $(document).ready(function () {
+            debugger
+            // Proxy created on the fly
+            var hub = $.connection.myNewHub;
+
+            // Declare a function on the hub hub so the server can invoke it
+            hub.client.displayStatus = function () {
+                debugger
+                getData();
+            };
+
+            // Start the connection
+            $.connection.hub.start();
+
+
+            getData();
+
+            function getData() {
+                var divNotificaion = $('#divNotificaion');
+                $.ajax({
+                    url: '/Notification/GetNotification',
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+                        debugger
+                        data = $.parseJSON(data);
+                        if (data.length > 0) {
+                            divNotificaion.empty();
+                            //// set Count
+                            $('#ntCnt').text(data.length);
+
+                            ///Make notification html
+                            for (var i = 0; i < data.length; i++) {
+                                var notification = '<div class="alert alert-info alert-dismissable">' +
+                                    '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                                    + data[i].Message +
+                                    '<br /><a href="/Project/ListProjects" class="BR">go to contact messages page</a>'
+
+
+                                '</div>'
+                                divNotificaion.append(notification);
+                            }
+
+                        }
+                    }, error: function (r, e, w) {
+                    }
+                });
+            }
+        });
+</script>

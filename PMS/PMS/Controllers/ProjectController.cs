@@ -37,6 +37,14 @@ namespace PMS.Controllers
         {
             db.projects.Add(pro);
             db.SaveChanges();
+
+            //tbl_Notification no = new tbl_Notification {
+            //    ExtraColumn = "Y",
+            //    Status = "yes",
+            //    Message= "Customer "+User.Identity.Name+" have been add post"
+            //};
+            //db.tbl_Notification.Add(no);
+            //db.SaveChanges();
             return RedirectToAction("ListProjects");
         }
         [HttpGet]
@@ -157,6 +165,44 @@ namespace PMS.Controllers
             var usr = db.users.ToList();
             return usr;
         }
+        /*================================= TEST NotiFication=============================*/
+        [Authorize(Roles ="admin")]
+        public ActionResult TestNoti()
+        {
+            var model = getProjects();
+            return View(model);
+        }
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public ActionResult TestNotiDeleteProject(int id)
+        {
+            var model = db.projects.SingleOrDefault(x => x.id == id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public ActionResult TestNotiDeleteProject(project pro)
+        {
+            var model = db.projects.SingleOrDefault(x => x.id == pro.id);
+            db.projects.Remove(model);
+            db.SaveChanges();
+
+            tbl_Notification noti = new tbl_Notification
+            {
+                ExtraColumn = "admin",
+                Message = "Your project ' " + pro.name + " ' has been deleted for specific reasons try to contact ..",
+                Status= "Yes"
+            };
+            db.tbl_Notification.Add(noti);
+            db.SaveChanges();
+
+            
+
+            return RedirectToAction("TestNoti");
+        }
+
+
 
     }
 }
