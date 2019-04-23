@@ -24,6 +24,7 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__3A4CA8FD" />
         <EntityTypeShape EntityType="pmsEcommerceModel.tbl_Notification" Width="1.5" PointX="5.375" PointY="3.75" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__6CA31EA0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

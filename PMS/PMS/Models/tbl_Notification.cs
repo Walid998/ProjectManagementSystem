@@ -18,5 +18,8 @@ namespace PMS.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public string ExtraColumn { get; set; }
+        public string usrname { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

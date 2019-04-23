@@ -33,7 +33,7 @@ namespace PMS.Models
 
                     connection.Open();
                     //// Sanjay : Alwasys use "dbo" prefix of database to trigger change event
-                    using (command = new SqlCommand(@"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification] where ExtraColumn= 'admin' ", connection))
+                    using (command = new SqlCommand(@"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]", connection))
                     {
                         command.Notification = null;
 

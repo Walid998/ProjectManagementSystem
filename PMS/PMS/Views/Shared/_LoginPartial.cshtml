@@ -4,10 +4,10 @@
     </style>
     <ul>
         <li style="display:inline-block">
-            <div class="notification-icon" style="margin-top:10px">
+            <a href="@Url.Action("Test","Notification")"><div class="notification-icon" style="margin-top:10px">
                 <i class="material-icons" style="font-size:24px;color:red">notifications_active</i>
                 <span class="badge badge-danger" style="background-color:red;font-size:10px" id="ntCnt"></span>
-            </div>
+            </div></a>
         </li>
         <li style="display:inline-block">
             @Html.ActionLink("Hello " + User.Identity.Name + " " + " ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
