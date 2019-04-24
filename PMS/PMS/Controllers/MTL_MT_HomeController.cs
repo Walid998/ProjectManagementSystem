@@ -12,13 +12,23 @@ namespace PMS.Controllers
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
 
         // GET: MTL_MT_Home
-        // [Authorize (Roles = "MTL,TL")]
+
+         [Authorize (Roles = "MTL,MT")]
 
         public ActionResult Index()
         {
-            var p = db.projects.ToList();
-            return View(p);
+            if (User.IsInRole("MTL"))
+            {
+                var p = db.CreateProjects.Where(x => x.leader_name.Equals(User.Identity.Name)).ToList();
+                return View(p);
+            }
 
+            //User is MT
+            else
+            {
+                var p = db.CreateProjects.Where(x => x.leader_name.Equals(User.Identity.Name)).ToList();
+                return View(p);
+            }
         }
     }
 }

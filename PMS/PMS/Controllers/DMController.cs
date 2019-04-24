@@ -16,19 +16,19 @@ namespace PMS.Controllers
         [Authorize(Roles = "MD")]
         public ActionResult Index()
         {           
-            var projects = db.projects.Where(x => x.usrname.Equals(User.Identity.Name)).ToList();
+            var projects = db.projectAssigns.Where(x => x.name_dm.Equals(User.Identity.Name)).ToList();
             return View(projects);
         }
 
 
-        //GEt project by id
+        //GEt projectAssign by id
         public ActionResult Delete(int? ID)
         {
             if (ID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            project p = db.projects.Find(ID);
+            projectAssign p = db.projectAssigns.Find(ID);
             if (p == null)
             {
                 return HttpNotFound();
@@ -37,12 +37,15 @@ namespace PMS.Controllers
             return View(p);
         }
 
-        //Delete project
+        //Delete projectAssign from MD & Project => To do
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int ID)
         {
-            project p = db.projects.Find(ID);
-            db.projects.Remove(p);
+            projectAssign p = db.projectAssigns.Find(ID);
+            db.projectAssigns.Remove(p);
+
+            project x = db.projects.Find(ID);
+            x.stat = "to do";
             db.SaveChanges();
             return RedirectToAction("Index");
         }
