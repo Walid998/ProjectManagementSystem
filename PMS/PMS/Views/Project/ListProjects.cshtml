@@ -1,7 +1,7 @@
-﻿@model IEnumerable<PMS.Models.project>
+﻿@model PMS.Models.ProjectAssignment
 
 @{
-    ViewBag.Title = "ListProjects";
+    ViewBag.Title = "Customer Home";
     Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
 }
 
@@ -11,24 +11,24 @@
 <br />
 <hr />
 
-<h2>ListProjects</h2>
+<h2>Projects</h2>
 <p>
     <a href="#add">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="Plist">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.project.name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descrption)
+            @Html.DisplayNameFor(model => model.project.descrption)
         </th>
 
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.projects)
     {
         <tr>
 
@@ -38,12 +38,82 @@
             <td>
                 @Html.DisplayFor(modelItem => item.descrption)
             </td>
+
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "EditProjectCust", new { id = item.id }) |
+                @Html.ActionLink("Details", "DetailsProCust", new { id = item.id }) |
+                @Html.ActionLink("Delete", "DeleteProjectCust", new { id = item.id })
+
+                @using (Html.BeginForm("AssignMD", "Project", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.DropDownListFor(m => m.projectAs.name_dm, new SelectList(Model.mds, "Username", "Username"), "Choose MD", new { @Name = "name_dm",id="mdsel", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" })
+                    <input type="text" name="proId" value="@item.id" hidden />
+                    <input type="text" name="usrname" value="@HttpContext.Current.User.Identity.Name" hidden />
+                    <input type="submit" name="submit" value="add" style="width:50px;height:30px;border:none;border-radius:5px;cursor:pointer" />
+
+                }
+                <br />
+                @*<p style="font-size:10px;margin-bottom:0px">marketing directors you've been assigned</p>*@
+                <div>
+                    <button class="collapsible" style="font-size:10px;margin-bottom:0px;background:none;border:none">marketing directors you've been assigned /<span style="font-size:7px">(click to close/open)</span></button>
+                    <div class="content">
+                        <table>
+
+                            @foreach (var itemAs in Model.projectAsinss)
+                            {
+                                if (itemAs.proId == item.id)
+                                {
+                                    <tr style="font-size:small;">
+
+                                        <td>
+
+                                            @Html.DisplayFor(modelItem => itemAs.name_dm)
+                                        </td>
+
+                                        <td>
+                                            <form action="/Project/DeleteMDAssign" method="post">
+                                                <input type="text" name="id" value="@itemAs.id" hidden/>
+                                                <i class='fas fa-user-alt-slash' style='font-size:12px;color:firebrick'></i>
+                                                <input type="submit" style="color:firebrick;font-size:12px;background:none;border:none;margin:-10px;cursor:pointer" value="delete" />
+                                            </form>
+                                            @*<a href="/Project/DeleteMDAssign" style="color:firebrick"><i class='fas fa-user-alt-slash' style='font-size:12px'></i>delete</a>*@
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
             </td>
         </tr>
+
     }
 
+
 </table>
+<script>
+    $(document).ready(function () {
+        $("#mdsel option:first-child").attr("disabled", "true");
+    });
+
+</script>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>

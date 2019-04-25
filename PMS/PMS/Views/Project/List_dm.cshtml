@@ -9,7 +9,8 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <h2>List_dm</h2>
-
+<button id="hide">Hide</button>
+<button id="show">Show</button>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -34,43 +35,55 @@
     @foreach (var item in Model.projects)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.cust_name)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.descrption)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.stat)
-            </td>
-            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+
                 @using (Html.BeginForm("AssignMD", "Project", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
-                    @Html.DropDownListFor(m => m.projectAs.name_dm, new SelectList(Model.mds, "Username", "Username"), "Choose MD", new {@Name="name_dm", @class = "form-control" })
-                    <input type="text" name="proId" value="@item.id"  hidden/>
+                    @Html.DropDownListFor(m => m.projectAs.name_dm, new SelectList(Model.mds, "Username", "Username"), "Choose MD", new { @Name = "name_dm", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:14px" })
+                    <input type="text" name="proId" value="@item.id" hidden />
                     <input type="text" name="usrname" value="@HttpContext.Current.User.Identity.Name" hidden />
-                    <input type="submit" value="Add" class="btn btn-default"/>
-                    
+                    <input type="submit" value="add" style="width:50px;height:30px;border:none;border-radius:5px;" />
+
                 }
-                @Ajax.ActionLink("Mdir","Mdir", new { id=item.id } ,new AjaxOptions()
-           {
+                <br />
+                <p style="font-size:10px;margin-bottom:0px">marketing directors you've been assigned</p>
+                <table>
+                    @foreach (var itemAs in Model.projectAsinss)
+                    {
+                        if (itemAs.proId == item.id)
+                        {
+                            <tr style="font-size:small">
 
-               HttpMethod= "GET",
-               UpdateTargetId = "divMDs",
-               InsertionMode= InsertionMode.Replace
+                                <td >
+                                    @Html.DisplayFor(modelItem => itemAs.name_dm)
+                                </td>
 
-           })
-                <div id="divMDs"></div>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                <td>
+                                    <a href="#"><i class='fas fa-user-alt-slash' style='font-size:12px'></i>delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
             </td>
         </tr>
+ 
     }
 
 </table>
+
+

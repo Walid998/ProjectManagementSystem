@@ -6,7 +6,8 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <style>
         .container {
             margin: 40px
@@ -58,8 +59,8 @@
     <div class="head">
         <div class="log2"><a href="#">Lights</a></div>
         <div class="log">
-                @Html.Partial("_LoginPartial")
-            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
     </div>
     <button class="w3-button w3-xlarge w3-right" style="background-color:transparent" onclick="openRightMenu()">&#9776;</button>
 
@@ -86,5 +87,7 @@
             document.getElementById("rightMenu").style.display = "none";
         }
     </script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

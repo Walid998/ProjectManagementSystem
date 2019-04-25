@@ -14,11 +14,20 @@ namespace PMS.Controllers
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: Project
         
-        [Authorize(Roles ="admin,MD,MTL,TL,customer")]
+        [Authorize(Roles ="customer")]
         public ActionResult ListProjects()
         {
-            var pros = getProjects().Where(x => x.usrname.Equals(User.Identity.Name));
-            return View(pros);
+            var pros = getProjects().Where(x => x.usrname.Equals(User.Identity.Name) && x.stat == "to do");
+            var md = getDm().Where(x => x.Role == "MD");
+            var Asgn = db.projectAssigns.ToList();
+            ProjectAssignment PA = new ProjectAssignment
+            {
+                mds = md,
+                projects = pros,
+                projectAsinss = Asgn
+
+            };
+            return View(PA);
         }
         public IEnumerable<project> getProjects()
         {
@@ -35,9 +44,10 @@ namespace PMS.Controllers
         [HttpPost]
         public ActionResult AddProject(project pro)
         {
+            pro.stat = "to do";
             db.projects.Add(pro);
             db.SaveChanges();
-
+            // this noti for test
             tbl_Notification no = new tbl_Notification
             {
                 ExtraColumn = "Y",
@@ -49,23 +59,55 @@ namespace PMS.Controllers
             return RedirectToAction("ListProjects");
         }
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult DetailsProCust(int id)
         {
             var pro = getProjects().SingleOrDefault(y => y.id == id);
-            return View(pro);
+            var mds = db.projectAssigns.ToList().Where(x => x.proId == id);
+            ProjectAssignment PA = new ProjectAssignment {
+                project = pro,
+                projectAsinss = mds
+                
+            };
+            return View(PA);
         }
 
         [HttpGet]
-        public ActionResult DeleteProject(int id)
+        public ActionResult DeleteProjectCust(int id)
         {
             var pro = getProjects().SingleOrDefault(y => y.id == id);
-            return View(pro);
+            var mds = db.projectAssigns.ToList().Where(x => x.proId == id);
+            ProjectAssignment PA = new ProjectAssignment {
+                project = pro,
+                projectAsinss =mds
+            };
+            return View(PA);
         }
         [HttpPost]
-        public ActionResult DeleteProject(project pro)
+        public ActionResult DeleteProjectCust(project pro)
         {
             var pros = getProjects().SingleOrDefault(y => y.id == pro.id);
             db.projects.Remove(pros);
+            db.SaveChanges();
+            return RedirectToAction("ListProjects");
+        }
+        [HttpGet]
+        public ActionResult EditProjectCust(int id)
+        {
+            var pr = db.projects.Find(id);
+            var mds = db.projectAssigns.ToList().Where(x => x.proId == id);
+            ProjectAssignment PA = new ProjectAssignment
+            {
+                project = pr,
+                projectAsinss = mds
+            };
+            return View(PA);
+        }
+        [HttpPost]
+        public ActionResult EditProjectCust(project pro)
+        {
+            var p = db.projects.SingleOrDefault(x => x.id == pro.id);
+            p.name = pro.name;
+            p.descrption = pro.descrption;
             db.SaveChanges();
             return RedirectToAction("ListProjects");
         }
@@ -160,9 +202,12 @@ namespace PMS.Controllers
         {
             var md = getDm().Where(x => x.Role == "MD");
             var pros = db.projects.ToList();
+            var Asgn = db.projectAssigns.ToList();
             ProjectAssignment PA = new ProjectAssignment {
                 mds = md,
-                projects =pros
+                projects =pros,
+                projectAsinss =Asgn
+
             };
             return View(PA);
         }
@@ -181,12 +226,26 @@ namespace PMS.Controllers
         [HttpPost]
         public ActionResult AssignMD(projectAssign pa)
         {
-            db.projectAssigns.Add(pa);
-            db.SaveChanges();
-
-            return RedirectToAction("List_dm");
+            if (pa.name_dm == null || pa.name_dm.Equals("Assign MD"))
+            {
+                return Content("<script language='javascript' type='text/javascript'>alert('MD has not determined !!');window.location.replace('ListProjects');</script>");
+            }
+            else
+            {
+                db.projectAssigns.Add(pa);
+                db.SaveChanges();
+                return RedirectToAction("ListProjects");
+            }
         }
 
+        [HttpPost]
+        public ActionResult DeleteMDAssign(projectAssign PA)
+        {
+            var md = db.projectAssigns.SingleOrDefault(x => x.id == PA.id);
+            db.projectAssigns.Remove(md);
+            db.SaveChanges();
+            return RedirectToAction("ListProjects");
+        }
 
         }
 }

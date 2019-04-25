@@ -2,19 +2,58 @@
 
 
 <table class="table">
-    
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name_dm) 
-            
-        </td>
-        <td>
-            <p style="color:forestgreen;font-size:12px">Assigned</p>
-        </td>
-       
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name_dm)
+
+            </td>
+            <td>
+                <p style="color:forestgreen;font-size:12px">Assigned</p>
+            </td>
+
+        </tr>
+    }
 
 </table>
+@*<script>
+        function myFunction() {
+            var txt = document.getElementsByName("name_dm").values;
+            var r = confirm("you are going to assign " + txt + " to ..");
+            if (r == false) {
+
+            }
+            else {
+                txt = "You pressed Cancel!";
+            }
+            //document.getElementById("demo").innerHTML = txt;
+        }
+    </script>*@
+
+<tr>
+    <content>
+        <table>
+            @foreach (var itemAs in Model.projectAsinss)
+            {
+                if (itemAs.proId == item.id)
+                {
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => itemAs.name_dm)
+                    </td>
+                    <td id="collapsible" style="color:forestgreen;font-size:small">
+                        Assigned
+                    </td>
+                    <td>
+                        <a href="#"><i class='fas fa-user-alt-slash' style='font-size:12px'></i>delete</a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    </content>
+</tr>
