@@ -321,6 +321,7 @@
     <Content Include="Views\Project\DetailsProCust.cshtml" />
     <Content Include="Views\Project\DeleteProjectCust.cshtml" />
     <Content Include="Views\Project\EditProjectCust.cshtml" />
+    <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
