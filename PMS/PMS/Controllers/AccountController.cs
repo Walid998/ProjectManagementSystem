@@ -1,6 +1,7 @@
 ﻿using PMS.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,12 +58,22 @@ namespace PMS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(user reg,string name)
+        public ActionResult Register(user reg, string name)
         {
-            reg.Role = "customer";
-            db.users.Add(reg);
-            db.SaveChanges();
-            return View("Index");
+            if (reg.Username != null)
+            {
+                reg.Role = "customer";
+                string fileName = Path.GetFileNameWithoutExtension(reg.Upload.FileName);
+                string extension = Path.GetExtension(reg.Upload.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                reg.photo = fileName;
+                reg.Upload.SaveAs(Path.Combine(Server.MapPath("~/AppFile/Images"), fileName));
+                db.users.Add(reg);
+                db.SaveChanges();
+            }
+            var result = "Successfully Added";
+            return Json(result, JsonRequestBehavior.AllowGet);
+            
         }
         [Authorize]
         public ActionResult SignOut()

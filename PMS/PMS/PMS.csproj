@@ -329,6 +329,7 @@
     <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AppFile\Images\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Feedback\" />
   </ItemGroup>

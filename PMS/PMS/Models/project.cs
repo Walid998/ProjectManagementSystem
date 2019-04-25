@@ -11,8 +11,7 @@ namespace PMS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +21,14 @@ namespace PMS.Models
         }
     
         public int id { get; set; }
-        [Display(Name="Customer Name")]
         public string cust_name { get; set; }
-        [Required(ErrorMessage ="you've to enter project name")]
-        [Display(Name = "Name")]
         public string name { get; set; }
-        [Required(ErrorMessage = "you've to enter project description")]
-        [Display(Name = "Description")]
         public string descrption { get; set; }
         public string usrname { get; set; }
         public string stat { get; set; }
     
-        public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<projectAssign> projectAssigns { get; set; }
+        public virtual user user { get; set; }
     }
 }
