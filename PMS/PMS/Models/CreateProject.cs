@@ -21,7 +21,6 @@ namespace PMS.Models
         public Nullable<int> stat { get; set; }
         public Nullable<double> price { get; set; }
         public string leader_name { get; set; }
-        public Nullable<int> team_id { get; set; }
         public string usrname { get; set; }
     
         public virtual user user { get; set; }

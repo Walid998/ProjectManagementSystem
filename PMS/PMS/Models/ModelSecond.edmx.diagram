@@ -5,16 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f26ee041d8344862a1f674a3fd85e357" Name="Diagram1">
-        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.projectAssign" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.qualification" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.user" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.userType" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__72C60C4A" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__notficati__usrna__75A278F5" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__project__usrname__66603565" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__proId__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrna__6A30C649" ManuallyRouted="false" />
@@ -25,6 +21,10 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__3A4CA8FD" />
         <EntityTypeShape EntityType="pmsEcommerceModel.tbl_Notification" Width="1.5" PointX="5.375" PointY="3.75" />
         <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__6CA31EA0" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="3" PointY="18.375" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__notficati__usrna__73BA3083" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
