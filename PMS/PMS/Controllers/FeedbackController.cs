@@ -13,15 +13,16 @@ namespace PMS.Controllers
         public void error()
         {
 
-            Running = true;
+            Running = false;
             Console.WriteLine(" not feedback send ");
         }
 
 
-        public void send()
+        public ActionResult send()
         {
             Running = true;
             Console.WriteLine(" successful send ");
+            return View();
         }
     }
 }

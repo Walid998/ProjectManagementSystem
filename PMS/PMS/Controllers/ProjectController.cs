@@ -115,7 +115,16 @@ namespace PMS.Controllers
         /*************Manage_project_to_create*************/
         public ActionResult manage_project()
         {
-            return View();
+            var pros = getProjects().Where(x => x.stat == "to do");
+            var mtls = getDm().Where(x=>x.Role == "MTL");
+            var mts = getDm().Where(x=>x.Role == "MT");
+            CreateProject PA = new CreateProject {
+                mtl = mtls,
+                mt = mts ,
+                projectss = pros
+            
+            };
+            return View(PA);
         }
         [HttpPost]
         public ActionResult manage_project(CreateProject c)

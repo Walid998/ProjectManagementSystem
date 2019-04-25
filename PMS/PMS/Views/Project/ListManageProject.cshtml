@@ -8,7 +8,7 @@
 <h2>ListManageProject</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "manage_project")
 </p>
 <table class="table">
     <tr>
@@ -62,9 +62,9 @@
             @Html.DisplayFor(modelItem => item.user.Role)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-            @Html.ActionLink("Details", "Details_project", new { id = item.id }) |
-            @Html.ActionLink("Delete", "DeleteManageProject", new { id = item.id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details_project", new { id = item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "DeleteManageProject", new { id = item.id } , new { @class= "btn btn-danger" })
         </td>
     </tr>
 }

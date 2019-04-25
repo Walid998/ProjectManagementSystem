@@ -2,24 +2,25 @@
 
 @{
     ViewBag.Title = "manage_project";
-    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
 }
 
 <h2>manage_project</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("manage_project","Project",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CreateProject</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.pro_name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pro_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.pro_name, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.pro_name, new SelectList(Model.projectss, "name", "name"), new { @id = "mtls", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" })
+                
             </div>
         </div>
 
@@ -56,18 +57,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.leader_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.leader_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.leader_name, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.leader_name, new SelectList(Model.mtl, "Username", "Username"), new {@id="mtls", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" } )
+               
             </div>
         </div>
 
-        
-        
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add" class="btn btn-danger" />
             </div>
         </div>
     </div>
@@ -76,3 +76,27 @@
 <div>
     @Html.ActionLink("Back to List", "ListManageProject")
 </div>
+<script>
+    $(document).ready(function () {
+        $("#mtls option:first-child").attr("disabled", "true");
+    });
+
+</script>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
