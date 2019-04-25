@@ -1,0 +1,54 @@
+﻿@model PMS.Models.ProjectAssignment
+
+@{
+    ViewBag.Title = "EditProjectCust";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+<h2>EditProjectCust</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.project.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.project.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.project.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.project.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.project.descrption, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.project.descrption, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.project.descrption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (Model.projectAsinss.Count() > 0)
+                {
+                    <input type="submit" value="Delete" class="btn btn-default" title="can't delete because you've been assign this project to one or more directors" disabled />
+                }
+                else
+                {
+
+                    <input id="mdsel" type="submit" value="Delete" class="btn btn-default" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ListProjects")
+</div>

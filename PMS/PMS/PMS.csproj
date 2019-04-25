@@ -323,6 +323,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Project\List_dm.cshtml" />
     <Content Include="Views\Project\Mdir.cshtml" />
+    <Content Include="Views\Project\DetailsProCust.cshtml" />
+    <Content Include="Views\Project\DeleteProjectCust.cshtml" />
+    <Content Include="Views\Project\EditProjectCust.cshtml" />
     <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <ItemGroup>

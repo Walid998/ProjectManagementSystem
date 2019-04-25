@@ -1,0 +1,45 @@
+﻿@model PMS.Models.ProjectAssignment
+
+@{
+    ViewBag.Title = "DetailsProCust";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+<h2>DetailsProCust</h2>
+
+<div>
+    <h4>project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.project.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.project.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.project.descrption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.project.descrption)
+        </dd>
+        <dt style="font-size:12px">
+            marketing directors you've been assigned to this project:
+        </dt>
+        
+        @foreach(var item in Model.projectAsinss)
+        {
+            <dd style="margin-left:20px">
+              - @item.name_dm 
+            </dd>
+        }
+    </dl>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.project.id }) |
+    @Html.ActionLink("Back to List", "ListProjects")
+</p>

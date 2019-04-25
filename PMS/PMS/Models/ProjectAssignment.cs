@@ -11,5 +11,6 @@ namespace PMS.Models
         public IEnumerable<user> mds { get; set; }
         public project project { get; set; }
         public projectAssign projectAs { get; set; }
+        public IEnumerable<projectAssign> projectAsinss { get; set; }
     }
 }

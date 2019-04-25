@@ -1,0 +1,47 @@
+﻿@model PMS.Models.ProjectAssignment
+
+@{
+    ViewBag.Title = "DeleteProjectCust";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+<h2>DeleteProjectCust</h2>
+
+<h3>Are you sure you want to delete this project ?</h3>
+<div>
+    <h4>project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.project.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.project.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.project.descrption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.project.descrption)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @if (Model.projectAsinss.Count() > 0)
+        {
+        <input type="submit" value="Delete" class="btn btn-default" title="can't delete because you've been assign this project to one or more directors" disabled/> 
+        }
+        else {
+
+            <input id="mdsel" type="submit" value="Delete" class="btn btn-default" />
+        }
+        | @Html.ActionLink("Back to List", "ListProjects")
+    </div>
+    }
+</div>
