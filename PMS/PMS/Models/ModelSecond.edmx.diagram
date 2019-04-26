@@ -13,18 +13,18 @@
         <EntityTypeShape EntityType="pmsEcommerceModel.tbl_Notification" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="3" PointY="18.375" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.user" Width="1.5" PointX="8" PointY="7" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__notficati__usrna__73BA3083" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__project__usrname__6477ECF3" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrna__619B8048" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__5EBF139D" />
         <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="10.25" PointY="7.875" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__02FC7413" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__03F0984C" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.user" Width="1.5" PointX="8" PointY="6.75" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__5F7E2DAC" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__notficati__usrna__607251E5" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__project__usrname__5D95E53A" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrna__5E8A0973" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrna__5CA1C101" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__756D6ECB" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__625A9A57" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__634EBE90" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__6442E2C9" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__6166761E" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

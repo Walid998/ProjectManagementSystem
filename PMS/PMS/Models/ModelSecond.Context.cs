@@ -32,7 +32,7 @@ namespace PMS.Models
         public virtual DbSet<tbl_Notification> tbl_Notification { get; set; }
         public virtual DbSet<CreateProject> CreateProjects { get; set; }
         public virtual DbSet<notfication> notfications { get; set; }
-        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<team> teams { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }

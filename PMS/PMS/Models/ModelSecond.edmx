@@ -16,6 +16,7 @@
           <Property Name="stat" Type="int" />
           <Property Name="price" Type="float" />
           <Property Name="leader_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="team_id" Type="int" />
           <Property Name="usrname" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="notfication">
@@ -45,7 +46,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="proId" Type="int" />
           <Property Name="usrname" Type="nvarchar" MaxLength="50" />
-          <Property Name="name_dm" Type="nvarchar" MaxLength="55" />
+          <Property Name="name_dm" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="qualifications">
           <Key>
@@ -89,7 +90,6 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="photo" Type="nvarchar(max)" />
           <Property Name="experience" Type="nvarchar" MaxLength="100" />
-          <Property Name="projectno" Type="int" />
         </EntityType>
         <EntityType Name="userType">
           <Key>
@@ -98,7 +98,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="typ" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CreatePro__usrna__70DDC3D8">
+        <Association Name="FK__CreatePro__usrna__5F7E2DAC">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="CreateProject" Type="Self.CreateProject" Multiplicity="*" />
           <ReferentialConstraint>
@@ -110,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__notficati__usrna__73BA3083">
+        <Association Name="FK__notficati__usrna__607251E5">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="notfication" Type="Self.notfication" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__project__usrname__6477ECF3">
+        <Association Name="FK__project__usrname__5D95E53A">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="project" Type="Self.project" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__projectAs__proId__6754599E">
+        <Association Name="FK__projectAs__proId__245D67DE">
           <End Role="project" Type="Self.project" Multiplicity="0..1" />
           <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__projectAs__usrna__68487DD7">
+        <Association Name="FK__projectAs__usrna__5E8A0973">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="projectAssign" Type="Self.projectAssign" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__qualifica__usrna__619B8048">
+        <Association Name="FK__qualifica__usrna__5CA1C101">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="qualifications" Type="Self.qualifications" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_Notif__usrna__1EA48E88">
+        <Association Name="FK__tbl_Notif__usrna__756D6ECB">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="tbl_Notification" Type="Self.tbl_Notification" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__team__lderUname__02FC7413">
+        <Association Name="FK__team__lderUname__625A9A57">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="team" Type="Self.team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -194,7 +194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__team__memUname__03F0984C">
+        <Association Name="FK__team__memUname__634EBE90">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="team" Type="Self.team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__team__usrname__04E4BC85">
+        <Association Name="FK__team__usrname__6442E2C9">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="team" Type="Self.team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,7 +218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__Role__5EBF139D">
+        <Association Name="FK__users__Role__6166761E">
           <End Role="userType" Type="Self.userType" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,47 +240,47 @@
           <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userType" EntityType="Self.userType" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CreatePro__usrna__70DDC3D8" Association="Self.FK__CreatePro__usrna__70DDC3D8">
+          <AssociationSet Name="FK__CreatePro__usrna__5F7E2DAC" Association="Self.FK__CreatePro__usrna__5F7E2DAC">
             <End Role="users" EntitySet="users" />
             <End Role="CreateProject" EntitySet="CreateProject" />
           </AssociationSet>
-          <AssociationSet Name="FK__notficati__usrna__73BA3083" Association="Self.FK__notficati__usrna__73BA3083">
+          <AssociationSet Name="FK__notficati__usrna__607251E5" Association="Self.FK__notficati__usrna__607251E5">
             <End Role="users" EntitySet="users" />
             <End Role="notfication" EntitySet="notfication" />
           </AssociationSet>
-          <AssociationSet Name="FK__project__usrname__6477ECF3" Association="Self.FK__project__usrname__6477ECF3">
+          <AssociationSet Name="FK__project__usrname__5D95E53A" Association="Self.FK__project__usrname__5D95E53A">
             <End Role="users" EntitySet="users" />
             <End Role="project" EntitySet="project" />
           </AssociationSet>
-          <AssociationSet Name="FK__projectAs__proId__6754599E" Association="Self.FK__projectAs__proId__6754599E">
+          <AssociationSet Name="FK__projectAs__proId__245D67DE" Association="Self.FK__projectAs__proId__245D67DE">
             <End Role="project" EntitySet="project" />
             <End Role="projectAssign" EntitySet="projectAssign" />
           </AssociationSet>
-          <AssociationSet Name="FK__projectAs__usrna__68487DD7" Association="Self.FK__projectAs__usrna__68487DD7">
+          <AssociationSet Name="FK__projectAs__usrna__5E8A0973" Association="Self.FK__projectAs__usrna__5E8A0973">
             <End Role="users" EntitySet="users" />
             <End Role="projectAssign" EntitySet="projectAssign" />
           </AssociationSet>
-          <AssociationSet Name="FK__qualifica__usrna__619B8048" Association="Self.FK__qualifica__usrna__619B8048">
+          <AssociationSet Name="FK__qualifica__usrna__5CA1C101" Association="Self.FK__qualifica__usrna__5CA1C101">
             <End Role="users" EntitySet="users" />
             <End Role="qualifications" EntitySet="qualifications" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_Notif__usrna__1EA48E88" Association="Self.FK__tbl_Notif__usrna__1EA48E88">
+          <AssociationSet Name="FK__tbl_Notif__usrna__756D6ECB" Association="Self.FK__tbl_Notif__usrna__756D6ECB">
             <End Role="users" EntitySet="users" />
             <End Role="tbl_Notification" EntitySet="tbl_Notification" />
           </AssociationSet>
-          <AssociationSet Name="FK__team__lderUname__02FC7413" Association="Self.FK__team__lderUname__02FC7413">
+          <AssociationSet Name="FK__team__lderUname__625A9A57" Association="Self.FK__team__lderUname__625A9A57">
             <End Role="users" EntitySet="users" />
             <End Role="team" EntitySet="team" />
           </AssociationSet>
-          <AssociationSet Name="FK__team__memUname__03F0984C" Association="Self.FK__team__memUname__03F0984C">
+          <AssociationSet Name="FK__team__memUname__634EBE90" Association="Self.FK__team__memUname__634EBE90">
             <End Role="users" EntitySet="users" />
             <End Role="team" EntitySet="team" />
           </AssociationSet>
-          <AssociationSet Name="FK__team__usrname__04E4BC85" Association="Self.FK__team__usrname__04E4BC85">
+          <AssociationSet Name="FK__team__usrname__6442E2C9" Association="Self.FK__team__usrname__6442E2C9">
             <End Role="users" EntitySet="users" />
             <End Role="team" EntitySet="team" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__Role__5EBF139D" Association="Self.FK__users__Role__5EBF139D">
+          <AssociationSet Name="FK__users__Role__6166761E" Association="Self.FK__users__Role__6166761E">
             <End Role="userType" EntitySet="userType" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
@@ -300,7 +300,7 @@
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="stat" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="projectAssigns" Relationship="Self.FK__projectAs__proId__693CA210" FromRole="project" ToRole="projectAssign" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__project__usrname__6477ECF3" FromRole="project" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__project__usrname__5D95E53A" FromRole="project" ToRole="user" />
         </EntityType>
         <EntityType Name="projectAssign">
           <Key>
@@ -309,9 +309,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="proId" Type="Int32" />
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="name_dm" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="name_dm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="project" Relationship="Self.FK__projectAs__proId__693CA210" FromRole="projectAssign" ToRole="project" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" FromRole="projectAssign" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__projectAs__usrna__5E8A0973" FromRole="projectAssign" ToRole="user" />
         </EntityType>
         <EntityType Name="qualification">
           <Key>
@@ -320,7 +320,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__qualifica__usrna__619B8048" FromRole="qualification" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__qualifica__usrna__5CA1C101" FromRole="qualification" ToRole="user" />
         </EntityType>
         <EntityType Name="userType">
           <Key>
@@ -328,7 +328,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="typ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="users" Relationship="pmsEcommerceModel.FK__users__Role__5EBF139D" FromRole="userType" ToRole="user" />
+          <NavigationProperty Name="users" Relationship="pmsEcommerceModel.FK__users__Role__6166761E" FromRole="userType" ToRole="user" />
         </EntityType>
         <Association Name="FK__projectAs__proId__693CA210">
           <End Role="project" Type="Self.project" Multiplicity="0..1" />
@@ -354,49 +354,49 @@
           <EntitySet Name="tbl_Notification" EntityType="pmsEcommerceModel.tbl_Notification" />
           <EntitySet Name="CreateProjects" EntityType="pmsEcommerceModel.CreateProject" />
           <EntitySet Name="notfications" EntityType="pmsEcommerceModel.notfication" />
+          <EntitySet Name="teams" EntityType="pmsEcommerceModel.team" />
           <EntitySet Name="users" EntityType="pmsEcommerceModel.user" />
-          <AssociationSet Name="FK__CreatePro__usrna__70DDC3D8" Association="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8">
+          <AssociationSet Name="FK__CreatePro__usrna__5F7E2DAC" Association="pmsEcommerceModel.FK__CreatePro__usrna__5F7E2DAC">
             <End Role="user" EntitySet="users" />
             <End Role="CreateProject" EntitySet="CreateProjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__notficati__usrna__73BA3083" Association="pmsEcommerceModel.FK__notficati__usrna__73BA3083">
+          <AssociationSet Name="FK__notficati__usrna__607251E5" Association="pmsEcommerceModel.FK__notficati__usrna__607251E5">
             <End Role="user" EntitySet="users" />
             <End Role="notfication" EntitySet="notfications" />
           </AssociationSet>
-          <AssociationSet Name="FK__project__usrname__6477ECF3" Association="pmsEcommerceModel.FK__project__usrname__6477ECF3">
+          <AssociationSet Name="FK__project__usrname__5D95E53A" Association="pmsEcommerceModel.FK__project__usrname__5D95E53A">
             <End Role="user" EntitySet="users" />
             <End Role="project" EntitySet="projects" />
           </AssociationSet>
-          <AssociationSet Name="FK__projectAs__usrna__68487DD7" Association="pmsEcommerceModel.FK__projectAs__usrna__68487DD7">
+          <AssociationSet Name="FK__projectAs__usrna__5E8A0973" Association="pmsEcommerceModel.FK__projectAs__usrna__5E8A0973">
             <End Role="user" EntitySet="users" />
             <End Role="projectAssign" EntitySet="projectAssigns" />
           </AssociationSet>
-          <AssociationSet Name="FK__qualifica__usrna__619B8048" Association="pmsEcommerceModel.FK__qualifica__usrna__619B8048">
+          <AssociationSet Name="FK__qualifica__usrna__5CA1C101" Association="pmsEcommerceModel.FK__qualifica__usrna__5CA1C101">
             <End Role="user" EntitySet="users" />
             <End Role="qualification" EntitySet="qualifications" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_Notif__usrna__1EA48E88" Association="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88">
+          <AssociationSet Name="FK__tbl_Notif__usrna__756D6ECB" Association="pmsEcommerceModel.FK__tbl_Notif__usrna__756D6ECB">
             <End Role="user" EntitySet="users" />
             <End Role="tbl_Notification" EntitySet="tbl_Notification" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__Role__5EBF139D" Association="pmsEcommerceModel.FK__users__Role__5EBF139D">
+          <AssociationSet Name="FK__team__lderUname__625A9A57" Association="pmsEcommerceModel.FK__team__lderUname__625A9A57">
+            <End Role="user" EntitySet="users" />
+            <End Role="team" EntitySet="teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__memUname__634EBE90" Association="pmsEcommerceModel.FK__team__memUname__634EBE90">
+            <End Role="user" EntitySet="users" />
+            <End Role="team" EntitySet="teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__team__usrname__6442E2C9" Association="pmsEcommerceModel.FK__team__usrname__6442E2C9">
+            <End Role="user" EntitySet="users" />
+            <End Role="team" EntitySet="teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__Role__6166761E" Association="pmsEcommerceModel.FK__users__Role__6166761E">
             <End Role="userType" EntitySet="userTypes" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
-          <EntitySet Name="teams" EntityType="pmsEcommerceModel.team" />
-          <AssociationSet Name="FK__team__lderUname__02FC7413" Association="pmsEcommerceModel.FK__team__lderUname__02FC7413">
-            <End Role="user" EntitySet="users" />
-            <End Role="team" EntitySet="teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__team__memUname__03F0984C" Association="pmsEcommerceModel.FK__team__memUname__03F0984C">
-            <End Role="user" EntitySet="users" />
-            <End Role="team" EntitySet="teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__team__usrname__04E4BC85" Association="pmsEcommerceModel.FK__team__usrname__04E4BC85">
-            <End Role="user" EntitySet="users" />
-            <End Role="team" EntitySet="teams" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="tbl_Notification">
           <Key>
             <PropertyRef Name="NotificationId" />
@@ -406,7 +406,7 @@
           <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ExtraColumn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" FromRole="tbl_Notification" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__tbl_Notif__usrna__756D6ECB" FromRole="tbl_Notification" ToRole="user" />
         </EntityType>
         <EntityType Name="CreateProject">
           <Key>
@@ -420,7 +420,8 @@
           <Property Name="price" Type="Double" />
           <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8" FromRole="CreateProject" ToRole="user" />
+          <Property Name="team_id" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__CreatePro__usrna__5F7E2DAC" FromRole="CreateProject" ToRole="user" />
         </EntityType>
         <EntityType Name="notfication">
           <Key>
@@ -430,8 +431,23 @@
           <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="dscrption" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__notficati__usrna__73BA3083" FromRole="notfication" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__notficati__usrna__607251E5" FromRole="notfication" ToRole="user" />
         </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lderUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="project_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__team__lderUname__625A9A57" FromRole="team" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="pmsEcommerceModel.FK__team__memUname__634EBE90" FromRole="team" ToRole="user" />
+          <NavigationProperty Name="user2" Relationship="pmsEcommerceModel.FK__team__usrname__6442E2C9" FromRole="team" ToRole="user" />
+          </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="Username" />
@@ -444,19 +460,18 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="projectno" Type="Int32" />
-          <NavigationProperty Name="CreateProjects" Relationship="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8" FromRole="user" ToRole="CreateProject" />
-          <NavigationProperty Name="notfications" Relationship="pmsEcommerceModel.FK__notficati__usrna__73BA3083" FromRole="user" ToRole="notfication" />
-          <NavigationProperty Name="projects" Relationship="pmsEcommerceModel.FK__project__usrname__6477ECF3" FromRole="user" ToRole="project" />
-          <NavigationProperty Name="projectAssigns" Relationship="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" FromRole="user" ToRole="projectAssign" />
-          <NavigationProperty Name="qualifications" Relationship="pmsEcommerceModel.FK__qualifica__usrna__619B8048" FromRole="user" ToRole="qualification" />
-          <NavigationProperty Name="tbl_Notification" Relationship="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" FromRole="user" ToRole="tbl_Notification" />
-          <NavigationProperty Name="userType" Relationship="pmsEcommerceModel.FK__users__Role__5EBF139D" FromRole="user" ToRole="userType" />
-          <NavigationProperty Name="teams" Relationship="pmsEcommerceModel.FK__team__lderUname__02FC7413" FromRole="user" ToRole="team" />
-          <NavigationProperty Name="teams1" Relationship="pmsEcommerceModel.FK__team__memUname__03F0984C" FromRole="user" ToRole="team" />
-          <NavigationProperty Name="teams2" Relationship="pmsEcommerceModel.FK__team__usrname__04E4BC85" FromRole="user" ToRole="team" />
+          <NavigationProperty Name="CreateProjects" Relationship="pmsEcommerceModel.FK__CreatePro__usrna__5F7E2DAC" FromRole="user" ToRole="CreateProject" />
+          <NavigationProperty Name="notfications" Relationship="pmsEcommerceModel.FK__notficati__usrna__607251E5" FromRole="user" ToRole="notfication" />
+          <NavigationProperty Name="projects" Relationship="pmsEcommerceModel.FK__project__usrname__5D95E53A" FromRole="user" ToRole="project" />
+          <NavigationProperty Name="projectAssigns" Relationship="pmsEcommerceModel.FK__projectAs__usrna__5E8A0973" FromRole="user" ToRole="projectAssign" />
+          <NavigationProperty Name="qualifications" Relationship="pmsEcommerceModel.FK__qualifica__usrna__5CA1C101" FromRole="user" ToRole="qualification" />
+          <NavigationProperty Name="tbl_Notification" Relationship="pmsEcommerceModel.FK__tbl_Notif__usrna__756D6ECB" FromRole="user" ToRole="tbl_Notification" />
+          <NavigationProperty Name="teams" Relationship="pmsEcommerceModel.FK__team__lderUname__625A9A57" FromRole="user" ToRole="team" />
+          <NavigationProperty Name="teams1" Relationship="pmsEcommerceModel.FK__team__memUname__634EBE90" FromRole="user" ToRole="team" />
+          <NavigationProperty Name="teams2" Relationship="pmsEcommerceModel.FK__team__usrname__6442E2C9" FromRole="user" ToRole="team" />
+          <NavigationProperty Name="userType" Relationship="pmsEcommerceModel.FK__users__Role__6166761E" FromRole="user" ToRole="userType" />
         </EntityType>
-        <Association Name="FK__CreatePro__usrna__70DDC3D8">
+        <Association Name="FK__CreatePro__usrna__5F7E2DAC">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.CreateProject" Role="CreateProject" Multiplicity="*" />
           <ReferentialConstraint>
@@ -468,7 +483,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__notficati__usrna__73BA3083">
+        <Association Name="FK__notficati__usrna__607251E5">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.notfication" Role="notfication" Multiplicity="*" />
           <ReferentialConstraint>
@@ -480,7 +495,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__project__usrname__6477ECF3">
+        <Association Name="FK__project__usrname__5D95E53A">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.project" Role="project" Multiplicity="*" />
           <ReferentialConstraint>
@@ -492,7 +507,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__projectAs__usrna__68487DD7">
+        <Association Name="FK__projectAs__usrna__5E8A0973">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.projectAssign" Role="projectAssign" Multiplicity="*" />
           <ReferentialConstraint>
@@ -504,7 +519,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__qualifica__usrna__619B8048">
+        <Association Name="FK__qualifica__usrna__5CA1C101">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.qualification" Role="qualification" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,7 +531,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_Notif__usrna__1EA48E88">
+        <Association Name="FK__tbl_Notif__usrna__756D6ECB">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.tbl_Notification" Role="tbl_Notification" Multiplicity="*" />
           <ReferentialConstraint>
@@ -528,34 +543,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__Role__5EBF139D">
-          <End Type="pmsEcommerceModel.userType" Role="userType" Multiplicity="0..1" />
-          <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="userType">
-              <PropertyRef Name="typ" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="team">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="lderUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="memUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="member_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="project_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__team__lderUname__02FC7413" FromRole="team" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="pmsEcommerceModel.FK__team__memUname__03F0984C" FromRole="team" ToRole="user" />
-          <NavigationProperty Name="user2" Relationship="pmsEcommerceModel.FK__team__usrname__04E4BC85" FromRole="team" ToRole="user" />
-        </EntityType>
-        <Association Name="FK__team__lderUname__02FC7413">
+        <Association Name="FK__team__lderUname__625A9A57">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.team" Role="team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -567,7 +555,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__team__memUname__03F0984C">
+        <Association Name="FK__team__memUname__634EBE90">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.team" Role="team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -579,7 +567,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__team__usrname__04E4BC85">
+        <Association Name="FK__team__usrname__6442E2C9">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.team" Role="team" Multiplicity="*" />
           <ReferentialConstraint>
@@ -591,7 +579,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK__users__Role__6166761E">
+          <End Type="pmsEcommerceModel.userType" Role="userType" Multiplicity="0..1" />
+          <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="typ" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -650,6 +650,7 @@
           <EntitySetMapping Name="CreateProjects">
             <EntityTypeMapping TypeName="pmsEcommerceModel.CreateProject">
               <MappingFragment StoreEntitySet="CreateProject">
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
                 <ScalarProperty Name="usrname" ColumnName="usrname" />
                 <ScalarProperty Name="leader_name" ColumnName="leader_name" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -671,21 +672,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="pmsEcommerceModel.user">
-              <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="projectno" ColumnName="projectno" />
-                <ScalarProperty Name="experience" ColumnName="experience" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="teams">
             <EntityTypeMapping TypeName="pmsEcommerceModel.team">
               <MappingFragment StoreEntitySet="team">
@@ -695,6 +681,20 @@
                 <ScalarProperty Name="leader_name" ColumnName="leader_name" />
                 <ScalarProperty Name="memUname" ColumnName="memUname" />
                 <ScalarProperty Name="lderUname" ColumnName="lderUname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -328,6 +328,8 @@
     <Content Include="Views\Project\DeleteProjectCust.cshtml" />
     <Content Include="Views\Project\EditProjectCust.cshtml" />
     <Content Include="Views\View.cshtml" />
+    <Content Include="Views\profilepage\Details.cshtml" />
+    <Content Include="Views\profilepage\DetailUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />
