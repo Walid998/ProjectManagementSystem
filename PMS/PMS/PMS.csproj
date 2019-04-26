@@ -212,6 +212,7 @@
     <Compile Include="Models\team.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeamAssign.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>

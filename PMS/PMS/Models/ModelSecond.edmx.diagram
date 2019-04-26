@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.projectAssign" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.qualification" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.userType" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__proId__693CA210" ManuallyRouted="false" />
         <EntityTypeShape EntityType="pmsEcommerceModel.tbl_Notification" Width="1.5" PointX="5.375" PointY="3.75" />
@@ -21,10 +20,11 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" />
         <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrna__619B8048" />
         <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__5EBF139D" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="10.25" PointY="7.875" />
         <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__02FC7413" />
         <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__03F0984C" />
         <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__5EBF139D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

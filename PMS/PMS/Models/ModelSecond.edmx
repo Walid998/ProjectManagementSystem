@@ -75,6 +75,7 @@
           <Property Name="leader_name" Type="nvarchar" MaxLength="50" />
           <Property Name="member_name" Type="nvarchar" MaxLength="50" />
           <Property Name="usrname" Type="nvarchar" MaxLength="50" />
+          <Property Name="project_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -321,20 +322,6 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__qualifica__usrna__619B8048" FromRole="qualification" ToRole="user" />
         </EntityType>
-        <EntityType Name="team">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="lderUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="memUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="member_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__team__lderUname__02FC7413" FromRole="team" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="pmsEcommerceModel.FK__team__memUname__03F0984C" FromRole="team" ToRole="user" />
-          <NavigationProperty Name="user2" Relationship="pmsEcommerceModel.FK__team__usrname__04E4BC85" FromRole="team" ToRole="user" />
-          </EntityType>
         <EntityType Name="userType">
           <Key>
             <PropertyRef Name="typ" />
@@ -359,7 +346,6 @@
           <EntitySet Name="projects" EntityType="Self.project" />
           <EntitySet Name="projectAssigns" EntityType="Self.projectAssign" />
           <EntitySet Name="qualifications" EntityType="Self.qualification" />
-          <EntitySet Name="teams" EntityType="Self.team" />
           <EntitySet Name="userTypes" EntityType="Self.userType" />
           <AssociationSet Name="FK__projectAs__proId__693CA210" Association="Self.FK__projectAs__proId__693CA210">
             <End Role="project" EntitySet="projects" />
@@ -393,6 +379,11 @@
             <End Role="user" EntitySet="users" />
             <End Role="tbl_Notification" EntitySet="tbl_Notification" />
           </AssociationSet>
+          <AssociationSet Name="FK__users__Role__5EBF139D" Association="pmsEcommerceModel.FK__users__Role__5EBF139D">
+            <End Role="userType" EntitySet="userTypes" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <EntitySet Name="teams" EntityType="pmsEcommerceModel.team" />
           <AssociationSet Name="FK__team__lderUname__02FC7413" Association="pmsEcommerceModel.FK__team__lderUname__02FC7413">
             <End Role="user" EntitySet="users" />
             <End Role="team" EntitySet="teams" />
@@ -404,10 +395,6 @@
           <AssociationSet Name="FK__team__usrname__04E4BC85" Association="pmsEcommerceModel.FK__team__usrname__04E4BC85">
             <End Role="user" EntitySet="users" />
             <End Role="team" EntitySet="teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK__users__Role__5EBF139D" Association="pmsEcommerceModel.FK__users__Role__5EBF139D">
-            <End Role="userType" EntitySet="userTypes" />
-            <End Role="user" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_Notification">
@@ -464,10 +451,10 @@
           <NavigationProperty Name="projectAssigns" Relationship="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" FromRole="user" ToRole="projectAssign" />
           <NavigationProperty Name="qualifications" Relationship="pmsEcommerceModel.FK__qualifica__usrna__619B8048" FromRole="user" ToRole="qualification" />
           <NavigationProperty Name="tbl_Notification" Relationship="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" FromRole="user" ToRole="tbl_Notification" />
+          <NavigationProperty Name="userType" Relationship="pmsEcommerceModel.FK__users__Role__5EBF139D" FromRole="user" ToRole="userType" />
           <NavigationProperty Name="teams" Relationship="pmsEcommerceModel.FK__team__lderUname__02FC7413" FromRole="user" ToRole="team" />
           <NavigationProperty Name="teams1" Relationship="pmsEcommerceModel.FK__team__memUname__03F0984C" FromRole="user" ToRole="team" />
           <NavigationProperty Name="teams2" Relationship="pmsEcommerceModel.FK__team__usrname__04E4BC85" FromRole="user" ToRole="team" />
-          <NavigationProperty Name="userType" Relationship="pmsEcommerceModel.FK__users__Role__5EBF139D" FromRole="user" ToRole="userType" />
         </EntityType>
         <Association Name="FK__CreatePro__usrna__70DDC3D8">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
@@ -541,6 +528,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__users__Role__5EBF139D">
+          <End Type="pmsEcommerceModel.userType" Role="userType" Multiplicity="0..1" />
+          <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="typ" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lderUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memUname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="leader_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="project_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="pmsEcommerceModel.FK__team__lderUname__02FC7413" FromRole="team" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="pmsEcommerceModel.FK__team__memUname__03F0984C" FromRole="team" ToRole="user" />
+          <NavigationProperty Name="user2" Relationship="pmsEcommerceModel.FK__team__usrname__04E4BC85" FromRole="team" ToRole="user" />
+        </EntityType>
         <Association Name="FK__team__lderUname__02FC7413">
           <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="0..1" />
           <End Type="pmsEcommerceModel.team" Role="team" Multiplicity="*" />
@@ -574,18 +588,6 @@
             </Principal>
             <Dependent Role="team">
               <PropertyRef Name="usrname" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__users__Role__5EBF139D">
-          <End Type="pmsEcommerceModel.userType" Role="userType" Multiplicity="0..1" />
-          <End Type="pmsEcommerceModel.user" Role="user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="userType">
-              <PropertyRef Name="typ" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -623,18 +625,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="usrname" ColumnName="usrname" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="teams">
-            <EntityTypeMapping TypeName="pmsEcommerceModel.team">
-              <MappingFragment StoreEntitySet="team">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="lderUname" ColumnName="lderUname" />
-                <ScalarProperty Name="memUname" ColumnName="memUname" />
-                <ScalarProperty Name="leader_name" ColumnName="leader_name" />
-                <ScalarProperty Name="member_name" ColumnName="member_name" />
-                <ScalarProperty Name="usrname" ColumnName="usrname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -692,6 +682,19 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teams">
+            <EntityTypeMapping TypeName="pmsEcommerceModel.team">
+              <MappingFragment StoreEntitySet="team">
+                <ScalarProperty Name="project_name" ColumnName="project_name" />
+                <ScalarProperty Name="usrname" ColumnName="usrname" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="leader_name" ColumnName="leader_name" />
+                <ScalarProperty Name="memUname" ColumnName="memUname" />
+                <ScalarProperty Name="lderUname" ColumnName="lderUname" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
