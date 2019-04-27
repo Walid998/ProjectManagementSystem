@@ -7,27 +7,27 @@
 
 <h2>manage_project</h2>
 
-@using (Html.BeginForm("manage_project","Project",FormMethod.Post))
+@using (Html.BeginForm("manage_project", "Project", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+<form id="FT">
     <div class="form-horizontal">
         <h4>CreateProject</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
 
-            
+
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.pro_name, new SelectList(Model.projectss, "name", "name"), new { @id = "mtls", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" })
-                
+                @Html.DropDownListFor(model => model.pro_name, new SelectList(Model.projectss, "name", "name")," Select project name", new { @id = "mtls", @class = "form-control", @style = "width:350px;height:33px;display:inline-block;font-size:12px" })
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.strt_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.strt_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.strt_date, new { htmlAttributes = new { @class = "form-control", @required = true , type="date",@style = "width:350px;height:33px;display:inline-block;font-size:12px" } })
                 @Html.ValidationMessageFor(model => model.strt_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.end_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.end_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.end_date, new { htmlAttributes = new { @class = "form-control", @required = true , type="date",@style = "width:350px;height:33px;display:inline-block;font-size:12px" } })
                 @Html.ValidationMessageFor(model => model.end_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.stat, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.stat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.stat, new { htmlAttributes = new { @class = "form-control", @required = true ,type="bit", @style = "width:350px;height:33px;display:inline-block;font-size:12px" } })
                 @Html.ValidationMessageFor(model => model.stat, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,15 +51,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", @required = true ,type="price" , @style = "width:350px;height:33px;display:inline-block;font-size:12px" } })
                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.leader_name, new SelectList(Model.mtl, "Username", "Username"), new {@id="mtls", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" } )
-               
+                @Html.DropDownListFor(model => model.leader_name, new SelectList(Model.mtl, "Username", "Username")," Select leader name",new { @id = "mtls", @class = "form-control", @style = "width:350px;height:33px;display:inline-block;font-size:12px" })
+
             </div>
         </div>
 
@@ -67,17 +67,22 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add" class="btn btn-danger" />
+                <input type="submit" value="Add" class="btn btn-danger"  onclick="return alert('successful manage project')"/>
             </div>
         </div>
     </div>
+</form>
 }
 
 <div>
     @Html.ActionLink("Back to List", "ListManageProject")
+    
 </div>
+
+
 <script>
     $(document).ready(function () {
+        var vm = {};
         $("#mtls option:first-child").attr("disabled", "true");
     });
 
@@ -100,3 +105,4 @@
         });
     }
 </script>
+

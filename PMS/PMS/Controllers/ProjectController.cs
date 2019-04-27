@@ -129,8 +129,12 @@ namespace PMS.Controllers
         [HttpPost]
         public ActionResult manage_project(CreateProject c)
         {
-            db.CreateProjects.Add(c);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.CreateProjects.Add(c);
+                db.SaveChanges();
+                
+            }
             return RedirectToAction("ListManageProject");
         }
         public ActionResult ListManageProject()

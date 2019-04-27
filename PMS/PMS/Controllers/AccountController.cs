@@ -78,7 +78,11 @@ namespace PMS.Controllers
         [Authorize]
         public ActionResult SignOut()
         {
+            
             FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+
+
             return RedirectToAction("About", "Home");
         }
     }
