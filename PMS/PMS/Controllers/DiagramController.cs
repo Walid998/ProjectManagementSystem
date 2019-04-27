@@ -13,6 +13,7 @@ namespace PMS.Controllers
 
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         // GET: Diagram
+        [Authorize(Roles =("DM , MTL , MT"))]
         public ActionResult Index()
         {
             return View();
@@ -20,12 +21,27 @@ namespace PMS.Controllers
 
         public ActionResult GetData()
         {
-            int y = db.users.Where(x => x.Username.Equals(User.Identity.Name)).Count();
+            int y;
+            Ratio R = new Ratio();
+            if (User.IsInRole("MD"))
+            {
+                y = db.projectAssigns.Where(x => x.name_dm.Equals(User.Identity.Name)).Count();
+                R.projectno = y;
+            }
+            else if (User.IsInRole("MTL"))
+            {
+                y = db.CreateProjects.Where(x => x.leader_name.Equals(User.Identity.Name)).Count();
+                R.projectno = y;
+            }
+
+            else
+            {
+                y = db.teams.Where(x => x.member_name.Equals(User.Identity.Name)).Count();
+                R.projectno = y;
+            }
            // int number =y.projectno;
             int q = db.qualifications.Where(x => x.usrname.Equals(User.Identity.Name)).Count();
            
-            Ratio R = new Ratio();
-            R.projectno = y;
             R.qualification = q;
             return Json(R, JsonRequestBehavior.AllowGet);
         }

@@ -18,14 +18,16 @@ namespace PMS.Models
         public string pro_name { get; set; }
         public Nullable<System.DateTime> strt_date { get; set; }
         public Nullable<System.DateTime> end_date { get; set; }
-        public Nullable<int> stat { get; set; }
+        public string stat { get; set; }
         public Nullable<double> price { get; set; }
         public string leader_name { get; set; }
-        public string usrname { get; set; }
         public Nullable<int> team_id { get; set; }
+        public string usrname { get; set; }
+
         public IEnumerable<user> mt { get; set; }
         public IEnumerable<user> mtl { get; set; }
         public IEnumerable<project> projectss { get; set; }
+
         public virtual user user { get; set; }
     }
 }

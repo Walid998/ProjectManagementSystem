@@ -315,7 +315,6 @@
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\DM\Index.cshtml" />
     <Content Include="Views\DM\Delete.cshtml" />
-    <Content Include="Views\MTL_MT_Home\Index.cshtml" />
     <Content Include="Views\profilepage\Edit.cshtml" />
     <Content Include="Views\Shared\_Simple.cshtml" />
     <Content Include="Views\Notification\Test.cshtml" />
@@ -330,6 +329,9 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\profilepage\Details.cshtml" />
     <Content Include="Views\profilepage\DetailUser.cshtml" />
+    <Content Include="Views\MTL_MT_Home\List_MTL.cshtml" />
+    <Content Include="Views\MTL_MT_Home\List_MT.cshtml" />
+    <Content Include="Views\MTL_MT_Home\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />
