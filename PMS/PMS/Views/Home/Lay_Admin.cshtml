@@ -6,3 +6,13 @@
 
 <h2>Lay_Admin</h2>
 
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@Ajax.ActionLink("ProfInfo", "../profilepage/ProfInfo", new AjaxOptions()
+{
+                                        HttpMethod="GET",
+                                        UpdateTargetId="PresInfo",
+                                        InsertionMode=InsertionMode.Replace
+})
+<div id="PresInfo" style="background-color:brown"></div>
