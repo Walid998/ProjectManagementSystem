@@ -39,7 +39,19 @@ namespace PMS.Controllers
         [HttpGet]
         public ActionResult Details(Login model)
         {
-            var profile = db.users.Where(x => x.Username.Equals(User.Identity.Name)).ToList();
+            var profile = db.users.SingleOrDefault(x => x.Username.Equals(User.Identity.Name));
+            return View(profile);
+        }
+        [HttpGet]
+        public ActionResult DetailUser()
+        {
+            var profile = db.users.SingleOrDefault(x => x.Username.Equals(User.Identity.Name));
+            return View(profile);
+        }
+        [HttpGet]
+        public ActionResult _Customer_Trainee()
+        {
+            var profile = db.users.SingleOrDefault(x => x.Username.Equals(User.Identity.Name));
             return View(profile);
         }
 
@@ -66,6 +78,28 @@ namespace PMS.Controllers
         }
         [HttpPost]
         public ActionResult Edit(user use)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(use).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+            }
+
+            return RedirectToAction("DetailUser");
+
+        }
+        [HttpGet]
+        public ActionResult Edit_c(int? id)
+        {
+            user b = db.users.Find(id);
+            return View(b);
+        }
+        [HttpPost]
+        public ActionResult Edit_c(user use)
         {
 
             if (ModelState.IsValid)

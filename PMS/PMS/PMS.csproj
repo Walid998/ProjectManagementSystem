@@ -212,6 +212,7 @@
     <Compile Include="Models\team.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeamAssign.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
@@ -328,8 +329,11 @@
     <Content Include="Views\Project\EditProjectCust.cshtml" />
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\profilepage\ViewProf.cshtml" />
+    <Content Include="Views\profilepage\Details.cshtml" />
+    <Content Include="Views\profilepage\DetailUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AppFile\Images\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Feedback\" />
   </ItemGroup>

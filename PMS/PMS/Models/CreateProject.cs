@@ -28,6 +28,8 @@ namespace PMS.Models
 
         public IEnumerable<user> mtl { get; set; }
         public IEnumerable<user> mt { get; set; }
+        public IEnumerable<user> mtl { get; set; }
+        
         public IEnumerable<project> projectss { get; set; }
     }
 }

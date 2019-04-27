@@ -16,7 +16,22 @@ namespace PMS.Controllers
         
         public ActionResult add_team()
         {
-            return View();
+            var pros = getProjects().Where(x => x.stat == "to do");
+            
+            var mts = getDm().Where(x => x.Role == "MT");
+            team PA = new team
+            {
+                
+                mt = mts,
+                projects = pros
+
+            };
+            return View(PA);
+        }
+        public IEnumerable<user> getDm()
+        {
+            var usr = db.users.ToList();
+            return usr;
         }
         public ActionResult ListTeam()
         {
@@ -102,6 +117,12 @@ namespace PMS.Controllers
             }
             return View(Update);
         }
+        public IEnumerable<project> getProjects()
+        {
+            var pros = db.projects.ToList();
+            return pros;
+        }
+
 
     }
 }

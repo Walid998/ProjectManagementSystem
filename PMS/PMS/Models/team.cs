@@ -21,6 +21,10 @@ namespace PMS.Models
         public string member_name { get; set; }
         public string usrname { get; set; }
         public string project_name { get; set; }
+        public IEnumerable<project> projects { get; set; }
+        public IEnumerable<user> mt { get; set; }
+
+        public string project_name { get; set; }
     
         public virtual user user { get; set; }
         public virtual user user1 { get; set; }
