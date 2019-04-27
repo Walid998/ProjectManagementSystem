@@ -114,5 +114,15 @@ namespace PMS.Controllers
             return RedirectToAction("Details");
 
         }
+        public PartialViewResult ProfInfo()
+        {
+            var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name );
+            var photo = db.users.SingleOrDefault(x => x.photo == User.Identity.Name);
+            
+            return PartialView("ViewProf",item);
+        }
+
+        
+
     }
 }

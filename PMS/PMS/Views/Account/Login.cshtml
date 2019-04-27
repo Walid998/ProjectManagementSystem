@@ -30,6 +30,7 @@
     <!-- online-fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <!--//online-fonts -->
+    
 </head>
 <body>
     <!--header-->
@@ -47,13 +48,13 @@
                 @Html.ValidationSummary(true, " ", new { @class = " text-danger" })
                 <div class="form-group">
 
-                    @Html.TextBoxFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "username", @type = "text" })
+                    @Html.TextBoxFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "username", @type = "text" ,@required=true})
                     @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
 
                 </div>
                 <div class="form-group">
 
-                    @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "password", @type = "password" })
+                    @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "password", @type = "password" ,@required = true})
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
 

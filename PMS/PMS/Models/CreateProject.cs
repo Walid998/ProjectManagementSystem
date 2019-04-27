@@ -23,10 +23,11 @@ namespace PMS.Models
         public string leader_name { get; set; }
         public Nullable<int> team_id { get; set; }
         public string usrname { get; set; }
-
         public IEnumerable<user> mt { get; set; }
         public IEnumerable<user> mtl { get; set; }
         public IEnumerable<project> projectss { get; set; }
+
+
 
         public virtual user user { get; set; }
     }

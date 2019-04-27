@@ -58,12 +58,12 @@ namespace PMS.Controllers
             return View();
         }
         [HttpPost]
-       /* public ActionResult Register(user reg, string name)
+        public ActionResult Register(user reg, string name)
         {
             if (reg.Username != null)
             {
                 reg.Role = "customer";
-                //string fileName = Path.GetFileNameWithoutExtension(reg.Upload.FileName);
+                string fileName = Path.GetFileNameWithoutExtension(reg.Upload.FileName);
                 string extension = Path.GetExtension(reg.Upload.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
                 reg.photo = fileName;
@@ -74,13 +74,26 @@ namespace PMS.Controllers
             var result = "Successfully Added";
             return Json(result, JsonRequestBehavior.AllowGet);
 
-        }*/
+        }
 
         [Authorize]
         public ActionResult SignOut()
         {
+            
             FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+
+
             return RedirectToAction("About", "Home");
         }
+
+        public PartialViewResult ViewProf()
+        {
+            var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name);
+
+            return PartialView(item);
+        }
+
+
     }
 }

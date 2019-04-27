@@ -39,7 +39,7 @@
         }
         else {
 
-            <input id="mdsel" type="submit" value="Delete" class="btn btn-default" />
+            <input id="mdsel" type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure to delete?')"/>
         }
         | @Html.ActionLink("Back to List", "ListProjects")
     </div>

@@ -1,0 +1,57 @@
+﻿@model PMS.Models.user
+
+<div>
+    <h4>user</h4>
+    <hr />
+    <div class="image" style="margin-bottom:20px">
+        <img class="personPho" id="person" src="~/AppFile/Images/@Model.photo" />
+    </div>
+
+    <dl class="dl-horizontal">
+        <!-- user photo-->
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <content id="extra">
+            <dl>
+                
+
+                <dd>
+                    @Html.DisplayNameFor(model => model.phone):   @Html.DisplayFor(model => model.phone)
+                </dd>
+
+
+                <dd>
+                    @Html.DisplayNameFor(model => model.email):<br />   @Html.DisplayFor(model => model.email)
+
+                </dd>
+
+                <dd>
+                    @Html.DisplayNameFor(model => model.experience):   @Html.DisplayFor(model => model.experience)
+                </dd>
+            </dl>
+        </content>
+    </dl>
+</div>
+
+<script type="text/javascript">
+    var x = true;
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                
+                var width = $('#person').width();
+                if (width > 40 && x) {
+                    $('#person').css('width', '40px');
+                    $('#person').css('height', '40px');
+                    $('#extra').hide();
+                    x = false;
+                }
+                else if (width < 50 && !x) {
+                    $('#person').css('width', '140px');
+                    $('#person').css('height', '140px');
+                    $('#extra').show();
+                    x = true;
+                }
+            });
+        });</script>

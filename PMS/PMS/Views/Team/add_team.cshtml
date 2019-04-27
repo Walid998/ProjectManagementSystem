@@ -16,16 +16,16 @@
         <h4>team</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.member_name, new SelectList(Model.mt, "Username", "Username"), new { @id = "mt", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" })
+                @Html.DropDownListFor(model => model.member_name, new SelectList(Model.mt, "Username", "Username")," Select MT member", new { @id = "mt", @class = "form-control", @style = "width:350px;height:33px;display:inline-block;font-size:12px" , @required = true })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.project_name, new SelectList(Model.projects, "name", "name"), new { @id = "pro", @class = "form-control", @style = "width:150px;height:33px;display:inline-block;font-size:12px" })
+                @Html.DropDownListFor(model => model.project_name, new SelectList(Model.projects, "name", "name")," Select From projects",new { @id = "pro", @class = "form-control", @style = "width:350px;height:33px;display:inline-block;font-size:12px" , @required = true})
             </div>
         </div>
 
@@ -34,7 +34,9 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+            
     </div>
+    
 }
 
 <div>
