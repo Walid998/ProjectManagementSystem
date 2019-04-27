@@ -327,6 +327,7 @@
     <Content Include="Views\Project\DeleteProjectCust.cshtml" />
     <Content Include="Views\Project\EditProjectCust.cshtml" />
     <Content Include="Views\View.cshtml" />
+    <Content Include="Views\profilepage\ViewProf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

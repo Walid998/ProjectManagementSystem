@@ -18,6 +18,7 @@ namespace PMS.Models
         public string name { get; set; }
         public string dscrption { get; set; }
         public string usrname { get; set; }
+        public Nullable<System.DateTime> AddedOn { get; set; }
     
         public virtual user user { get; set; }
     }

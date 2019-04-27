@@ -80,5 +80,14 @@ namespace PMS.Controllers
             return RedirectToAction("Details");
 
         }
+        public PartialViewResult ProfInfo()
+        {
+            var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name);
+            
+            return PartialView("ViewProf",item);
+        }
+
+        
+
     }
 }

@@ -70,5 +70,14 @@ namespace PMS.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("About", "Home");
         }
+
+        public PartialViewResult ViewProf()
+        {
+            var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name);
+
+            return PartialView(item);
+        }
+
+
     }
 }

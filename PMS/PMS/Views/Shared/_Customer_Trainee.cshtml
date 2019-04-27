@@ -86,16 +86,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
             </div>
@@ -112,38 +112,7 @@
                     <span></span>
                 </button>
             </div>
-            <img class="personPho" id="person" src="~/Images/pic.jpg" />
-            <ul class="list-unstyled components" style="text-align:center">
-                <li class="active">
-
-
-                    <i class="fas fa-home"></i>
-                    Name
-
-
-                </li>
-                <li>
-                    <i class="fas fa-briefcase"></i>
-                    Phone
-                </li>
-                <li>
-                    <i class="fas fa-copy"></i>
-                    Email
-
-                </li>
-                <li>
-                    <i class="fas fa-copy"></i>
-                    Job
-
-                </li>
-                <li>
-                    <!--<a href="#">
-                        <i class="fas fa-image"></i>
-                        Portfolio
-                    </a>-->
-
-            </ul>
-
+            @{Html.RenderAction("ProfInfo", "profilepage");}
 
         </nav>
 
@@ -168,15 +137,6 @@
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
-                var width = $('#person').width();
-                if (width > 40) {
-                    $('#person').css('width', '40px');
-                    $('#person').css('height', '40px');
-                }
-                else if (width < 50) {
-                    $('#person').css('width', '140px');
-                    $('#person').css('height', '140px');
-                }
             });
         });</script>
 </body>
