@@ -3,7 +3,9 @@
 <div>
     <h4>user</h4>
     <hr />
-    <img class="personPho" id="person" src="~/Images/pic.jpg" />
+    <div class="image" style="margin-bottom:20px">
+        <img class="personPho" id="person" src="~/AppFile/Images/@Model.photo" />
+    </div>
 
     <dl class="dl-horizontal">
         <!-- user photo-->
@@ -13,20 +15,22 @@
         </dd>
         <content id="extra">
             <dl>
-            <dd>
-                @Html.DisplayNameFor(model => model.phone):   @Html.DisplayFor(model => model.phone)
-            </dd>
+                
+
+                <dd>
+                    @Html.DisplayNameFor(model => model.phone):   @Html.DisplayFor(model => model.phone)
+                </dd>
 
 
-            <dd>
-                @Html.DisplayNameFor(model => model.email):<br />   @Html.DisplayFor(model => model.email)
+                <dd>
+                    @Html.DisplayNameFor(model => model.email):<br />   @Html.DisplayFor(model => model.email)
 
-            </dd>
+                </dd>
 
-            <dd>
-                @Html.DisplayNameFor(model => model.experience):   @Html.DisplayFor(model => model.experience)
-            </dd>
-</dl>
+                <dd>
+                    @Html.DisplayNameFor(model => model.experience):   @Html.DisplayFor(model => model.experience)
+                </dd>
+            </dl>
         </content>
     </dl>
 </div>
