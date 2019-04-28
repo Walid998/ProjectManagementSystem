@@ -18,18 +18,10 @@ namespace PMS.Controllers
 
         public ActionResult Index()
         {
-            if (User.IsInRole("MTL"))
-            {
-                return RedirectToAction("List_MTL");
-            }
-
-            //User is MT
-            else
-            {
-                return RedirectToAction("List_MT");
-            }
+            var p = db.projects.Where(x => x.stat == "to do").ToList();
+            return View(p);
         }
-
+        /*
         public ActionResult List_MTL()
         {
             var p = db.CreateProjects.Where(x => x.leader_name.Equals(User.Identity.Name)).ToList();
@@ -74,7 +66,7 @@ namespace PMS.Controllers
             return RedirectToAction("List_MTL");
         }
 
-
+    */
 
     }
 }

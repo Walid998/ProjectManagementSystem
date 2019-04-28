@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PMS.Models.project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+
+@using (Html.BeginForm("AddProject", "Project", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" } )
+
+
+        <fieldset disabled="disabled" style="width:500px; margin-left:400px;">
+            <input type="text" name="cust_name" value="@HttpContext.Current.User.Identity.Name" hidden />
+            <div class="form-group">
+                <label class="control-label col-md-2" style="color:white">Project_Name</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="name"  style="width:400px;"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" style="color:white">Description</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="descrption" style="width:400px;"/>
+                </div>
+            </div>
+
+            <input type="text" name="usrname" value="@HttpContext.Current.User.Identity.Name" hidden />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-dark btn-large" style="margin-left:200px;"/>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+}
+<br />
+<br />
+
+<h2 style="color:white; margin-left:70px;">Not Assigned Projects</h2>
+<table class="table table-bordered" style="color:white ; text-align:center ; margin-left:100px;" >
+    <tr>
+        <th >
+            @Html.DisplayNameFor(model => model.cust_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrption)
+        </th>
+   
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cust_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descrption)
+            </td>
+         
+        </tr>
+    }
+
+</table>
+

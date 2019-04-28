@@ -25,8 +25,8 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__5EBF139D" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="5.25" PointY="1.875" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__70DDC3D8" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="5.25" PointY="0.875" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__54CB950F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

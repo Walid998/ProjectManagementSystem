@@ -38,8 +38,8 @@ namespace PMS.Models
         public string email { get; set; }
         public string photo { get; set; }
         public string experience { get; set; }
-        public HttpPostedFileBase Upload { get; set; }
-
+        public int projectno { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<feedback> feedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -61,5 +61,8 @@ namespace PMS.Models
         public virtual userType userType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreateProject> CreateProjects { get; set; }
+
+        public HttpPostedFileBase Upload { get; set; }
+
     }
 }
