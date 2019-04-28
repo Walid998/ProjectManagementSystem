@@ -1,5 +1,4 @@
 ﻿// T4 code generation is enabled for model 'C:\Users\Younis\source\repos\ProjectManagementSystem10\PMS\PMS\Models\ModelSecond.edmx'. 
-// T4 code generation is enabled for model 'D:\FCIH\Level 3\Second\SA2\ProjectManagementSystem\PMS\PMS\Models\ModelSecond.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

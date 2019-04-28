@@ -1,0 +1,40 @@
+﻿@model PMS.Models.feedback
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Feedback</title>
+    <link href="~/design_forget/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Reset Password Form " />
+    <!--google fonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!--element start here-->
+    <div class="elelment">
+        <h2>Feedback</h2>
+        <div class="element-main">
+            <h1>Leave a constructive Feedback</h1>
+            <p> type your email and your feedback </p>
+            @using (Html.BeginForm("send", "Feedback", FormMethod.Post, new { @class = "form-Horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <p>your feedback</p>
+                @Html.TextAreaFor(Model => Model.msg, new { @class = "form-control", @place_holder = "take for us your feedback :D" ,@style= "color: #000000" })
+                <p>your email</p>
+                @Html.TextBoxFor(Model => Model.email, new { @class = "form-control", @place_holder = "your email address" ,@style="color: #000000"})
+                <input type="submit" class="btn btn-default" value="send your feedback" />
+            }
+        </div>
+    </div>
+</body>
+</html>

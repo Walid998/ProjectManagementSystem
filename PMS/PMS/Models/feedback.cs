@@ -12,21 +12,13 @@ namespace PMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CreateProject
+    public partial class feedback
     {
         public int id { get; set; }
-        public string pro_name { get; set; }
-        public Nullable<System.DateTime> strt_date { get; set; }
-        public Nullable<System.DateTime> end_date { get; set; }
-        public string state { get; set; }
-        public Nullable<double> price { get; set; }
-        public string leader_name { get; set; }
+        public string msg { get; set; }
+        public string email { get; set; }
         public string usrname { get; set; }
-        public IEnumerable<user> mt { get; set; }
-        public IEnumerable<user> mtl { get; set; }
-        public IEnumerable<project> projectss { get; set; }
-
-
+    
         public virtual user user { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace PMS
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             SqlDependency.Start(@"data source=DESKTOP-KRNHDSE;initial catalog=pmsEcommerce;integrated security=True");
-            SqlDependency.Start(@"data source=DESKTOP-DIKIA4J\WM;initial catalog=pmsEcommerce;integrated security=True");
+            
 
         }
 

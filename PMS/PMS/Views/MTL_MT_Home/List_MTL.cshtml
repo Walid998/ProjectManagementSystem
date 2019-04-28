@@ -64,9 +64,7 @@
         <th>
             @Html.DisplayNameFor(model => model.leader_name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.team_id)
-        </th>
+        
     </tr>
     @foreach (var item in Model)
     {
@@ -88,9 +86,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.leader_name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.team_id)
-                </td>
+                
                 <td>
                     @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-primary btn-large" })
                 </td>
@@ -117,9 +113,7 @@
         <th>
             @Html.DisplayNameFor(model => model.price)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.team_id)
-        </th>
+        
     </tr>
     @foreach (var item in Model)
     {
@@ -141,9 +135,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.leader_name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.team_id)
-                </td>
+                
 
             </tr>
         }
