@@ -11,7 +11,8 @@ namespace PMS.Factory
 
         public string NotiType()
         {
-            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]  where ExtraColumn='admin' and ExtraColumn='MD'";
+            //var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]  where ExtraColumn='admin' and ExtraColumn='MD'";
+            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]  where ExtraColumn='customer'";
 
             return Models.NotificaionService.GetNotification(qu);
         }

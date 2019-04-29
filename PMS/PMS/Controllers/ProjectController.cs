@@ -50,8 +50,8 @@ namespace PMS.Controllers
             // this noti for test
             tbl_Notification no = new tbl_Notification
             {
-                ExtraColumn = "Y",
-                Status = "yes",
+                ExtraColumn = "admin",
+                Status = "/Notification/Test",
                 Message = "Customer " + User.Identity.Name + " have been add post"
             };
             db.tbl_Notification.Add(no);

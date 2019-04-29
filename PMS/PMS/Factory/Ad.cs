@@ -9,7 +9,7 @@ namespace PMS.Factory
     {
         public string NotiType()
         {
-            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]";
+            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification] where  ExtraColumn='admin'";
 
             return Models.NotificaionService.GetNotification(qu);
         }
