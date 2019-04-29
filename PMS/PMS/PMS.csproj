@@ -158,6 +158,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\DMController.cs" />
+    <Compile Include="Controllers\facade.cs" />
     <Compile Include="Controllers\feed.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -13,16 +13,9 @@ namespace PMS.Controllers
         pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         public bool Running { get; private set; }
         IFeedback feed = null;
-        public FeedbackController() : this(new feed())
-        {
 
-        }
-
-        public FeedbackController(IFeedback feed)
-        {
-            this.feed = feed;
-        }
-
+        facade done = new facade();
+        
         public void error()
         {
 
@@ -41,7 +34,7 @@ namespace PMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                feed.send(a);
+                done.attach(a);
             }
             return RedirectToAction("send");
         }
