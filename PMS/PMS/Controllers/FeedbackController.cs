@@ -10,7 +10,7 @@ namespace PMS.Controllers
     
     public class FeedbackController : Controller, IFeedback
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         public bool Running { get; private set; }
         IFeedback feed = null;
 

@@ -10,7 +10,7 @@ namespace PMS.Controllers
 {
     public class DMController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
 
         // GET: DM
         [Authorize(Roles = "MD")]
