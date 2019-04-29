@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PMS.Models.CreateProject>
+
+@{
+    /**/
+
+    /**/
+
+    ViewBag.Title = "ListCurrentPMTL";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+    int i = 0;
+}
+
+@*<script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+@if (!Model.Any())
+{
+    <div style="padding-top:15%;">
+        <center>
+            <h>Sorry, no data to show ..</h><br />
+            <img src="~/Image/shy.gif" style="width:200px;height:200px;" />
+        </center>
+    </div>
+
+}
+
+
+
+else
+{
+    <h2>Hi @User.Identity.Name! .. Those projects are in process:</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pro_name)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pro_name)
+                    <input type="text" id="proId" name="id" value="@item.id" hidden />
+                </td>
+                <td>
+                    @Html.ActionLink("Leave", "Leave", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal" data-target="#myModal">Details</button>
+
+
+}
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        @*Modal content*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details</h4>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pro_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.strt_date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.end_date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.price)
+                            </th>
+                        </tr>
+
+                        @foreach (var ite in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => ite.pro_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => ite.strt_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => ite.end_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => ite.price)
+                                </td>
+                            </tr>
+
+                        }
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

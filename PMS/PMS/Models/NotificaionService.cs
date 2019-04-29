@@ -12,7 +12,7 @@ namespace PMS.Models
     public class NotificaionService
     {
 
-        static readonly string connString = @"data source=DESKTOP-KRNHDSE;initial catalog=pmsEcommerce;integrated security=True";
+        static readonly string connString = @"data source=DESKTOP-SFUDGUF;initial catalog=pmsEcommerce;integrated security=True";
 
         internal static SqlCommand command = null;
         internal static SqlDependency dependency = null;

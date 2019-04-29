@@ -77,7 +77,22 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Marketing Director</h3>
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <h3>Admin</h3>
+                }
+
+                @if (ViewContext.HttpContext.User.IsInRole("MTL"))
+                {
+                    <h3>Marketting Team Leader</h3>
+                }
+
+                @if (ViewContext.HttpContext.User.IsInRole("MD"))
+                {
+                    <h3>Marketting Director</h3>
+                }
+
+
                 <strong>MD</strong>
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
@@ -104,7 +119,7 @@
                             <a href="~/Users/ListAllUsers">List</a>
                         </li>
                         <li>
-                            <a href="~/Users/AddUser">Add</a> 
+                            <a href="~/Users/AddUser">Add</a>
                         </li>
 
                     </ul>
@@ -142,6 +157,58 @@
                     </ul>
                 </li>
 
+
+                <!--Project-->
+                @if (ViewContext.HttpContext.User.IsInRole("MTL"))
+                {
+                    <li>
+                        <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Project
+                        </a>
+                        <ul class="collapse list-unstyled" id="projectSubmenu">
+                            <li>
+                                <a href="~/Project/ListCurrentPMTL">Current</a>
+                            </li>
+                            <li>
+                                <a href="~/Project/ListPerviousPMTL">Pervious</a>
+                            </li>
+                            <li>
+                                <a href="~/Project/">Request</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+
+                @if (ViewContext.HttpContext.User.IsInRole("MD"))
+                {
+                    <li>
+                        <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Project
+                        </a>
+                        <ul class="collapse list-unstyled" id="projectSubmenu">
+                            <li>
+                                <a href="~/Project/ListMTLProject">Current</a>
+                            </li>
+                            <li>
+                                <a href="~/Project/ListPerviousPMTL">Pervious</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-paper-plane"></i>
+                            Contact
+                        </a>
+                    </li>
+                }
+
                 <li>
                     <a href="#">
                         <i class="fas fa-image"></i>
@@ -157,12 +224,17 @@
                 <li>
 
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact
-                    </a>
-                </li>
+
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-paper-plane"></i>
+                            Projects
+                        </a>
+                    </li>
+                }
+                    
             </ul>
 
             <ul class="list-unstyled CTAs">

@@ -176,6 +176,7 @@
     <Compile Include="Models\CreateProject.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrentPMTL.cs" />
     <Compile Include="Models\ModelSecond.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,17 +229,21 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebr.css" />
+    <Content Include="Design_About\images\logo.png" />
     <Content Include="design_login\css\style.css" />
+    <Content Include="Design_About\css\StyleSheet.css" />
     <Content Include="design_login\images\arrow.png" />
     <Content Include="design_login\images\bg3.jpg" />
     <Content Include="design_login\images\mail.png" />
     <Content Include="design_login\images\pass.png" />
+    <Content Include="Design_About\images\PMS.jpg" />
     <Content Include="design_login\index.html" />
     <Content Include="design_login\w3layouts-License.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\shy.gif" />
     <Content Include="Models\ModelSecond.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelSecond.edmx</DependentUpon>
@@ -335,6 +340,14 @@
     <Content Include="Views\MTL_MT_Home\List_MTL.cshtml" />
     <Content Include="Views\MTL_MT_Home\List_MT.cshtml" />
     <Content Include="Views\MTL_MT_Home\Delete.cshtml" />
+    <Content Include="Views\Project\layout.cshtml" />
+    <Content Include="Views\Project\layout2.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMTL.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMTL.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMT.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMT.cshtml" />
+    <Content Include="Views\Project\Leave.cshtml" />
+    <Content Include="Views\Project\ListMTLProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />
