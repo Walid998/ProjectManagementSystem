@@ -181,10 +181,10 @@
     <Compile Include="Models\CreateProject.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrentPMTL.cs" />
     <Compile Include="Models\feedback.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CurrentPMTL.cs" />
     <Compile Include="Models\ModelSecond.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -237,6 +237,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebr.css" />
+    <Content Include="Design_About\images\logo.png" />
     <Content Include="design_login\css\style.css" />
     <Content Include="Design_About\css\StyleSheet.css" />
     <Content Include="design_login\images\arrow.png" />
@@ -346,6 +347,14 @@
     <Content Include="Views\profilepage\Details.cshtml" />
     <Content Include="Views\profilepage\DetailUser.cshtml" />
     <Content Include="Views\MTL_MT_Home\Delete.cshtml" />
+    <Content Include="Views\Project\layout.cshtml" />
+    <Content Include="Views\Project\layout2.cshtml" />
+    <Content Include="Views\Project\Leave.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMT.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMTL.cshtml" />
+    <Content Include="Views\Project\ListMTLProject.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMT.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMTL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />

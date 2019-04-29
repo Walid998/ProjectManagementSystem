@@ -16,10 +16,7 @@ namespace PMS
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            SqlDependency.Start(@"data source=DESKTOP-DIKIA4J\WM;initial catalog=pmsEcommerce;integrated security=True");
-            
+            BundleConfig.RegisterBundles(BundleTable.Bundles);            
 
             SqlDependency.Start(@"data source=DESKTOP-SFUDGUF;initial catalog=pmsEcommerce;integrated security=True");
         }

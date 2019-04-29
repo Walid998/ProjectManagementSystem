@@ -4,30 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="48d4f22e3cc841dd84346dbdaeb383e2" Name="Diagram1">
-        <EntityTypeShape EntityType="pmsEcommerceModel.feedback" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.projectAssign" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.qualification" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.tbl_Notification" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.team" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.user" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.userType" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__feedback__usrnam__50C5FA01" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__notficati__usrna__73BA3083" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__project__usrname__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__proId__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__projectAs__usrna__68487DD7" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__qualifica__usrna__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__tbl_Notif__usrna__1EA48E88" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__lderUname__02FC7413" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__5EBF139D" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="5.25" PointY="0.875" />
-        <AssociationConnector Association="pmsEcommerceModel.FK__CreatePro__usrna__54CB950F" />
-      <Diagram DiagramId="d93443892b9c4399adab672d309cf886" Name="Diagram1">
+      <Diagram DiagramId="3e67216506cc4c309a765c9dfc668c50" Name="Diagram1">
         <EntityTypeShape EntityType="pmsEcommerceModel.CreateProject" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.notfication" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="pmsEcommerceModel.project" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
@@ -49,6 +26,8 @@
         <AssociationConnector Association="pmsEcommerceModel.FK__team__memUname__3493CFA7" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__team__usrname__3587F3E0" ManuallyRouted="false" />
         <AssociationConnector Association="pmsEcommerceModel.FK__users__Role__2FCF1A8A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pmsEcommerceModel.feedback" Width="1.5" PointX="5.25" PointY="4.625" />
+        <AssociationConnector Association="pmsEcommerceModel.FK__feedback__usrnam__1758727B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

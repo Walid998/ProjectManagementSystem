@@ -8,7 +8,6 @@ namespace PMS.Controllers
 {
     public class facade
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
         private IFeedback Send;
         public facade()
         {
