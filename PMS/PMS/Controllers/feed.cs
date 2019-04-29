@@ -7,9 +7,9 @@ namespace PMS.Controllers
 {
     public class feed : IFeedback
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
-        
-         
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
+
+
 
         public bool Running => throw new NotImplementedException();
 

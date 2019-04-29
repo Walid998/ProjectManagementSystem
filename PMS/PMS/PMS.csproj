@@ -240,6 +240,7 @@
     <Content Include="design_forget\w3layouts-License.txt" />
     <Content Include="design_login\css\style.css" />
     <Content Include="design_login\images\arrow.png" />
+    <Content Include="design_login\images\Background.jpg" />
     <Content Include="design_login\images\bg3.jpg" />
     <Content Include="design_login\images\mail.png" />
     <Content Include="design_login\images\pass.png" />

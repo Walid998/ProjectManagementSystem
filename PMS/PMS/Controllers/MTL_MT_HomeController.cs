@@ -10,11 +10,11 @@ namespace PMS.Controllers
 {
     public class MTL_MT_HomeController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
 
         // GET: MTL_MT_Home
 
-         [Authorize (Roles = "MTL,MT")]
+        [Authorize (Roles = "MTL , MT")]
 
         public ActionResult Index()
         {

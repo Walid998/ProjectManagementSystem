@@ -14,7 +14,7 @@ namespace PMS.Controllers
 {
     public class AccountController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: Account
         public ActionResult Index()
         {

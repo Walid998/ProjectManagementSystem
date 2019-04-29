@@ -14,7 +14,7 @@ namespace PMS.Controllers
 {
     public class profilepageController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: profilepage
         /*image*/
         /*public ActionResult Index()
