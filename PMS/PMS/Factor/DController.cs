@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace PMS.Factor
 {
-    public class AController : Controller , NotificationController
+    public class DController : Controller , NotificationController
     {
-        // Admin Notifications
+  
         void NotificationController.Get_Query()
         {
-            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]";
+            var qu = @"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification] where ExtraColumn='admin'";
 
             String x = Models.NotificaionService.GetNotification(qu);
         }

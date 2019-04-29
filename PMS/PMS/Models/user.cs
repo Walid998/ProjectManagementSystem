@@ -18,6 +18,7 @@ namespace PMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public user()
         {
+            this.CreateProjects = new HashSet<CreateProject>();
             this.feedbacks = new HashSet<feedback>();
             this.notfications = new HashSet<notfication>();
             this.projects = new HashSet<project>();
@@ -27,7 +28,6 @@ namespace PMS.Models
             this.teams = new HashSet<team>();
             this.teams1 = new HashSet<team>();
             this.teams2 = new HashSet<team>();
-            this.CreateProjects = new HashSet<CreateProject>();
         }
     
         public int id { get; set; }
@@ -38,8 +38,10 @@ namespace PMS.Models
         public string email { get; set; }
         public string photo { get; set; }
         public string experience { get; set; }
-        public int projectno { get; set; }
-    
+        public HttpPostedFileBase Upload { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreateProject> CreateProjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<feedback> feedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -59,10 +61,5 @@ namespace PMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<team> teams2 { get; set; }
         public virtual userType userType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreateProject> CreateProjects { get; set; }
-
-        public HttpPostedFileBase Upload { get; set; }
-
     }
 }

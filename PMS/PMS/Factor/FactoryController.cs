@@ -9,23 +9,23 @@ namespace PMS.Factor
     public class FactoryController : Controller 
     {
         NotificationController x;
-        int a;
+        string a;
         // GET: Factory
 
 
-        public FactoryController (int a)
+        public FactoryController (string a)
         {
             this.a = a;
         }
-        public void Index()
+        public NotificationController Index()
         {
-            if (a==1)
+            if (a.Equals("admin"))
             {
-                x = new BController();
+               return x = new AController();
             }
-            else
+            else 
             {
-                x = new AController();
+               return x = new DController();
             }
         }
     }

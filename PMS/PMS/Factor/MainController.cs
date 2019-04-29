@@ -11,9 +11,9 @@ namespace PMS.Factor
         // GET: Main
         public void Index()
         {
-            int x = 1;
-            FactoryController factor = new FactoryController(x);
-            factor.Index();
+            //int x = 1;
+            //FactoryController factor = new FactoryController(x);
+            //factor.Index();
         }
     }
 }
