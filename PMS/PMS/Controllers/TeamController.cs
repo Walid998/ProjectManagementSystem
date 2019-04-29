@@ -11,9 +11,9 @@ namespace PMS.Controllers
 {
     public class TeamController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: team
-        
+
         public ActionResult add_team()
         {
             var pros = getProjects().Where(x => x.stat == "to do");

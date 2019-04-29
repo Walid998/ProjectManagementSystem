@@ -10,26 +10,18 @@ namespace PMS.Controllers
 {
     public class MTL_MT_HomeController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
 
         // GET: MTL_MT_Home
 
-         [Authorize (Roles = "MTL,MT")]
+        [Authorize (Roles = "MTL , MT")]
 
         public ActionResult Index()
         {
-            if (User.IsInRole("MTL"))
-            {
-                return RedirectToAction("List_MTL");
-            }
-
-            //User is MT
-            else
-            {
-                return RedirectToAction("List_MT");
-            }
+            var p = db.projects.Where(x => x.stat == "to do").ToList();
+            return View(p);
         }
-
+        /*
         public ActionResult List_MTL()
         {
             var p = db.CreateProjects.Where(x => x.leader_name.Equals(User.Identity.Name)).ToList();
@@ -74,7 +66,7 @@ namespace PMS.Controllers
             return RedirectToAction("List_MTL");
         }
 
-
+    */
 
     }
 }

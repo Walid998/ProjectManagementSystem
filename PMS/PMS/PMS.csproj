@@ -158,6 +158,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\DMController.cs" />
+    <Compile Include="Controllers\facade.cs" />
+    <Compile Include="Controllers\feed.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IFeedback.cs" />
@@ -166,14 +168,20 @@
     <Compile Include="Controllers\profilepageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="facadePattern.cs" />
-    <Compile Include="facade.cs" />
+    <Compile Include="Factor\BController.cs" />
+    <Compile Include="Factor\FactoryController.cs" />
+    <Compile Include="Factor\AController.cs" />
+    <Compile Include="Factor\MainController.cs" />
+    <Compile Include="Factor\NotificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\MyNewHub.cs" />
     <Compile Include="Interface1.cs" />
     <Compile Include="Models\CreateProject.cs">
+      <DependentUpon>ModelSecond.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\feedback.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CurrentPMTL.cs" />
@@ -229,10 +237,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebr.css" />
-    <Content Include="Design_About\images\logo.png" />
     <Content Include="design_login\css\style.css" />
     <Content Include="Design_About\css\StyleSheet.css" />
     <Content Include="design_login\images\arrow.png" />
+    <Content Include="design_login\images\Background.jpg" />
     <Content Include="design_login\images\bg3.jpg" />
     <Content Include="design_login\images\mail.png" />
     <Content Include="design_login\images\pass.png" />
@@ -337,22 +345,15 @@
     <Content Include="Views\profilepage\ViewProf.cshtml" />
     <Content Include="Views\profilepage\Details.cshtml" />
     <Content Include="Views\profilepage\DetailUser.cshtml" />
-    <Content Include="Views\MTL_MT_Home\List_MTL.cshtml" />
-    <Content Include="Views\MTL_MT_Home\List_MT.cshtml" />
     <Content Include="Views\MTL_MT_Home\Delete.cshtml" />
-    <Content Include="Views\Project\layout.cshtml" />
-    <Content Include="Views\Project\layout2.cshtml" />
-    <Content Include="Views\Project\ListCurrentPMTL.cshtml" />
-    <Content Include="Views\Project\ListPerviousPMTL.cshtml" />
-    <Content Include="Views\Project\ListCurrentPMT.cshtml" />
-    <Content Include="Views\Project\ListPerviousPMT.cshtml" />
-    <Content Include="Views\Project\Leave.cshtml" />
-    <Content Include="Views\Project\ListMTLProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Feedback\" />
+    <Folder Include="Views\B\" />
+    <Folder Include="Views\Factory\" />
+    <Folder Include="Views\Main\" />
+    <Folder Include="Views\MD\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

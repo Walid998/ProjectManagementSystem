@@ -12,9 +12,9 @@ namespace PMS.Controllers
 {
     public class ProjectController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: Project
-        
+
         [Authorize(Roles ="customer")]
         public ActionResult ListProjects()
         {

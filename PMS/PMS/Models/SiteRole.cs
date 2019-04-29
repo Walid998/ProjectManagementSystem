@@ -37,7 +37,8 @@ namespace PMS.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+            pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
+
             var data = db.users.Where(x => x.Username == username).FirstOrDefault().Role;
             string[] result = { data };
             return result;

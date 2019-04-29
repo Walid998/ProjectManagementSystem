@@ -11,9 +11,9 @@ namespace PMS.Controllers
     public class DiagramController : Controller
     {
 
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db =  pmsEcommerceEntities1.getInstance();
         // GET: Diagram
-        [Authorize(Roles =("DM , MTL , MT"))]
+        [Authorize(Roles =("MD , MTL , MT"))]
         public ActionResult Index()
         {
             return View();

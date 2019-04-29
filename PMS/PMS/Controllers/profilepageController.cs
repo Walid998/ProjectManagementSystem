@@ -14,7 +14,7 @@ namespace PMS.Controllers
 {
     public class profilepageController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: profilepage
         /*image*/
         /*public ActionResult Index()
@@ -117,7 +117,7 @@ namespace PMS.Controllers
         public PartialViewResult ProfInfo()
         {
             var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name );
-            var photo = db.users.SingleOrDefault(x => x.photo == User.Identity.Name);
+            
             
             return PartialView("ViewProf",item);
         }
