@@ -19,6 +19,7 @@ namespace PMS.Models
         public user()
         {
             this.CreateProjects = new HashSet<CreateProject>();
+            this.feedbacks = new HashSet<feedback>();
             this.notfications = new HashSet<notfication>();
             this.projects = new HashSet<project>();
             this.projectAssigns = new HashSet<projectAssign>();
@@ -42,6 +43,8 @@ namespace PMS.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreateProject> CreateProjects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<feedback> feedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<notfication> notfications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

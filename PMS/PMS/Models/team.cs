@@ -26,7 +26,6 @@ namespace PMS.Models
         public string leader_name { get; set; }
         public string member_name { get; set; }
         public string usrname { get; set; }
-        public Nullable<int> projectNo { get; set; }
         public string project_name { get; set; }
         public string state { get; set; }
         public IEnumerable<project> projects { get; set; }

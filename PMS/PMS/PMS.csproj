@@ -168,7 +168,14 @@
     <Compile Include="Controllers\profilepageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="Factor\BController.cs" />
+    <Compile Include="Factory\Ad.cs" />
+    <Compile Include="Factory\Customer.cs" />
+    <Compile Include="Factory\MD.cs" />
+    <Compile Include="Factory\MT.cs" />
+    <Compile Include="Factory\MTL.cs" />
+    <Compile Include="Factory\myFactory.cs" />
+    <Compile Include="Factory\NotiInterface.cs" />
+    <Compile Include="Factor\DController.cs" />
     <Compile Include="Factor\FactoryController.cs" />
     <Compile Include="Factor\AController.cs" />
     <Compile Include="Factor\MainController.cs" />

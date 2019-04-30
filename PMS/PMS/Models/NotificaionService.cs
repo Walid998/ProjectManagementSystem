@@ -22,18 +22,19 @@ namespace PMS.Models
         /// Gets the notifications.
         /// </summary>
         /// <returns></returns>
-        public static string GetNotification()
+        public static string GetNotification(string selectQuery)
         {
-            try
+            
+                try
             {
 
                 var messages = new List<tbl_Notification>();
                 using (var connection = new SqlConnection(connString))
                 {
-
+                    
                     connection.Open();
                     //// Sanjay : Alwasys use "dbo" prefix of database to trigger change event
-                    using (command = new SqlCommand(@"SELECT [NotificationId],[Status],[Message],[ExtraColumn] FROM [dbo].[tbl_Notification]", connection))
+                    using (command = new SqlCommand(selectQuery, connection))
                     {
                         command.Notification = null;
 
