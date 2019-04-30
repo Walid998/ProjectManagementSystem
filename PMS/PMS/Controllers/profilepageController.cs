@@ -116,13 +116,19 @@ namespace PMS.Controllers
         }
         public PartialViewResult ProfInfo()
         {
-            var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name );
-            
-            
-            return PartialView("ViewProf",item);
+            try
+            {
+                var item = db.users.SingleOrDefault(x => x.Username == User.Identity.Name);
+
+
+                return PartialView("ViewProf", item);
+            }
+            catch (Exception) { }
+            return null;
+
         }
 
-        
+
 
     }
 }

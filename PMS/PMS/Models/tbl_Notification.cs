@@ -19,7 +19,6 @@ namespace PMS.Models
         public string Message { get; set; }
         public string ExtraColumn { get; set; }
         public string usrname { get; set; }
-        public System.DateTime AddedOn { get; set; }
     
         public virtual user user { get; set; }
     }

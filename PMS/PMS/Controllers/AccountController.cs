@@ -73,6 +73,16 @@ namespace PMS.Controllers
                 reg.Upload.SaveAs(Path.Combine(Server.MapPath("~/AppFile/Images"), fileName));
                 db.users.Add(reg);
                 db.SaveChanges();
+                // this noti for test
+                tbl_Notification no = new tbl_Notification
+                {
+                    ExtraColumn = "admin",
+                    Status = "/Project/",
+
+                    Message = "New User :"+reg.Username + " has been register to the website"
+                };
+                db.tbl_Notification.Add(no);
+                db.SaveChanges();
             }
             var result = "Successfully Added";
             return Json(result, JsonRequestBehavior.AllowGet);

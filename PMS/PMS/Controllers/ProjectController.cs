@@ -43,6 +43,7 @@ namespace PMS.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public ActionResult AddProject(project pro)
         {
             pro.stat = "to do";
@@ -60,6 +61,7 @@ namespace PMS.Controllers
             return RedirectToAction("ListProjects");
         }
         [HttpGet]
+        [Authorize(Roles = "customer")]
         public ActionResult DetailsProCust(int id)
         {
             var pro = getProjects().SingleOrDefault(y => y.id == id);
@@ -73,6 +75,7 @@ namespace PMS.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "customer")]
         public ActionResult DeleteProjectCust(int id)
         {
             var pro = getProjects().SingleOrDefault(y => y.id == id);
@@ -84,6 +87,7 @@ namespace PMS.Controllers
             return View(PA);
         }
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public ActionResult DeleteProjectCust(project pro)
         {
             var pros = getProjects().SingleOrDefault(y => y.id == pro.id);
@@ -92,6 +96,7 @@ namespace PMS.Controllers
             return RedirectToAction("ListProjects");
         }
         [HttpGet]
+        [Authorize(Roles = "customer")]
         public ActionResult EditProjectCust(int id)
         {
             var pr = db.projects.Find(id);
@@ -104,6 +109,7 @@ namespace PMS.Controllers
             return View(PA);
         }
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public ActionResult EditProjectCust(project pro)
         {
             var p = db.projects.SingleOrDefault(x => x.id == pro.id);
@@ -114,6 +120,7 @@ namespace PMS.Controllers
         }
         /*********************************************/
         /*************Manage_project_to_create*************/
+        [Authorize(Roles = "MD")]
         public ActionResult manage_project()
         {
             var pros = getProjects().Where(x => x.stat == "to do");
@@ -128,6 +135,7 @@ namespace PMS.Controllers
             return View(PA);
         }
         [HttpPost]
+        [Authorize(Roles = "MD")]
         public ActionResult manage_project(CreateProject c)
         {
             if (ModelState.IsValid)
@@ -138,6 +146,7 @@ namespace PMS.Controllers
             }
             return RedirectToAction("ListManageProject");
         }
+        [Authorize(Roles = "MD")]
         public ActionResult ListManageProject()
         {
             var M = getManageProjects();
@@ -149,6 +158,7 @@ namespace PMS.Controllers
             return M;
         }
         [HttpGet]
+        [Authorize(Roles = "MD")]
         public ActionResult Details_project(int id)
         {
             var M = getManageProjects().SingleOrDefault(y => y.id == id);
@@ -156,12 +166,14 @@ namespace PMS.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "MD")]
         public ActionResult DeleteManageProject(int id)
         {
             var M = db.CreateProjects.SingleOrDefault(y => y.id == id);
             return View(M);
         }
         [HttpPost]
+        [Authorize(Roles = "MD")]
         public ActionResult DeleteManageProject(CreateProject pro)
         {
             var M = db.CreateProjects.SingleOrDefault(y => y.id == pro.id);
@@ -170,6 +182,8 @@ namespace PMS.Controllers
             return RedirectToAction("ListManageProject");
         }
         [HttpGet]
+        [Authorize(Roles = "MD")]
+        [Authorize(Roles = "MD")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -238,6 +252,7 @@ namespace PMS.Controllers
             return PartialView("Mdir",mds);
         }
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public ActionResult AssignMD(projectAssign pa)
         {
             if (pa.name_dm == null || pa.name_dm.Equals("Assign MD"))
@@ -248,11 +263,22 @@ namespace PMS.Controllers
             {
                 db.projectAssigns.Add(pa);
                 db.SaveChanges();
+                // this noti for test
+                tbl_Notification no = new tbl_Notification
+                {
+                    ExtraColumn = "MD",
+                    Status = "/Notification/Test",
+                    Message = "Customer " + User.Identity.Name + " Assign you to project"
+                };
+                db.tbl_Notification.Add(no);
+                db.SaveChanges();
+
                 return RedirectToAction("ListProjects");
             }
         }
 
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public ActionResult DeleteMDAssign(projectAssign PA)
         {
             var md = db.projectAssigns.SingleOrDefault(x => x.id == PA.id);

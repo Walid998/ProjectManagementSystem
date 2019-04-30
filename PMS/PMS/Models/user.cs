@@ -28,7 +28,6 @@ namespace PMS.Models
             this.teams = new HashSet<team>();
             this.teams1 = new HashSet<team>();
             this.teams2 = new HashSet<team>();
-            this.feedbacks = new HashSet<feedback>();
         }
     
         public int id { get; set; }
@@ -62,7 +61,5 @@ namespace PMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<team> teams2 { get; set; }
         public virtual userType userType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<feedback> feedbacks { get; set; }
     }
 }

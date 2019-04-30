@@ -13,7 +13,7 @@ namespace PMS.Controllers
     {
         pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: team
-
+        [Authorize(Roles = "MD,MTL")]
         public ActionResult add_team()
         {
             var pros = getProjects().Where(x => x.stat == "to do");
@@ -33,6 +33,7 @@ namespace PMS.Controllers
             var usr = db.users.ToList();
             return usr;
         }
+        [Authorize(Roles = "MD")]
         public ActionResult ListTeam()
         {
             var t = getTeams();
@@ -45,13 +46,26 @@ namespace PMS.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "MD,MTL")]
         public ActionResult add_team(team o)
         {
             db.teams.Add(o);
             db.SaveChanges();
+
+            // this noti for test
+            tbl_Notification no = new tbl_Notification
+            {
+                ExtraColumn = "admin",
+                Status = "/Notification/Test",
+                Message = "MD " + User.Identity.Name + " have been add new Team"
+            };
+            db.tbl_Notification.Add(no);
+            db.SaveChanges();
+
             return RedirectToAction("ListTeam");
         }
         [HttpGet]
+        [Authorize(Roles = "MD,MTL")]
         public ActionResult Details(int id)
         {
             var t = getTeams().SingleOrDefault(y => y.id == id);
@@ -62,13 +76,14 @@ namespace PMS.Controllers
             return View();
         }
         [HttpGet]
-        [Authorize(Roles = "MTL")]
+        [Authorize(Roles = "MTL,MD")]
         public ActionResult Deleteteam(int id)
         {
             var t = getTeams().SingleOrDefault(y => y.id == id);
             return View(t);
         }
         [HttpPost]
+        [Authorize(Roles = "MD,MTL")]
         public ActionResult Deleteteam(team o)
         {
             var t = getTeams().SingleOrDefault(y => y.id == o.id);
@@ -93,6 +108,7 @@ namespace PMS.Controllers
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "MD,MTL")]
         public ActionResult EditTeam(int? id)
         {
             if (id == null)

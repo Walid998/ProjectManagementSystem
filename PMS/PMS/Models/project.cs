@@ -25,8 +25,6 @@ namespace PMS.Models
         public string name { get; set; }
         public string descrption { get; set; }
         public string usrname { get; set; }
-        public string state { get; set; }
-        public Nullable<int> projectNo { get; set; }
         public string stat { get; set; }
     
         public virtual user user { get; set; }
