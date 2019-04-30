@@ -158,6 +158,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\DMController.cs" />
+    <Compile Include="Controllers\facade.cs" />
     <Compile Include="Controllers\feed.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models\CreateProject.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrentPMTL.cs" />
     <Compile Include="Models\feedback.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
@@ -242,20 +244,22 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebr.css" />
-    <Content Include="design_forget\css\style.css" />
-    <Content Include="design_forget\index.html" />
-    <Content Include="design_forget\w3layouts-License.txt" />
+    <Content Include="Design_About\images\logo.png" />
     <Content Include="design_login\css\style.css" />
+    <Content Include="Design_About\css\StyleSheet.css" />
     <Content Include="design_login\images\arrow.png" />
+    <Content Include="design_login\images\Background.jpg" />
     <Content Include="design_login\images\bg3.jpg" />
     <Content Include="design_login\images\mail.png" />
     <Content Include="design_login\images\pass.png" />
+    <Content Include="Design_About\images\PMS.jpg" />
     <Content Include="design_login\index.html" />
     <Content Include="design_login\w3layouts-License.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\shy.gif" />
     <Content Include="Models\ModelSecond.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelSecond.edmx</DependentUpon>
@@ -350,14 +354,14 @@
     <Content Include="Views\profilepage\Details.cshtml" />
     <Content Include="Views\profilepage\DetailUser.cshtml" />
     <Content Include="Views\MTL_MT_Home\Delete.cshtml" />
-    <Content Include="Views\Account\ForgetPassword.cshtml" />
-    <Content Include="Views\Account\InvalidCode.cshtml" />
-    <Content Include="Views\Account\NotMatch.cshtml" />
-    <Content Include="Views\Account\ResetCodeConfirmation.cshtml" />
-    <Content Include="Views\Account\UpdatePassword.cshtml" />
-    <Content Include="Views\Feedback\welcome.cshtml" />
-    <Content Include="Views\Feedback\send.cshtml" />
-    <Content Include="Views\MTL_MT_Home\Index.cshtml" />
+    <Content Include="Views\Project\layout.cshtml" />
+    <Content Include="Views\Project\layout2.cshtml" />
+    <Content Include="Views\Project\Leave.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMT.cshtml" />
+    <Content Include="Views\Project\ListCurrentPMTL.cshtml" />
+    <Content Include="Views\Project\ListMTLProject.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMT.cshtml" />
+    <Content Include="Views\Project\ListPerviousPMTL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />

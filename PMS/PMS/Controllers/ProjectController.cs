@@ -1,6 +1,7 @@
 ﻿using PMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -11,9 +12,9 @@ namespace PMS.Controllers
 {
     public class ProjectController : Controller
     {
-        pmsEcommerceEntities1 db = new pmsEcommerceEntities1();
+        pmsEcommerceEntities1 db = pmsEcommerceEntities1.getInstance();
         // GET: Project
-        
+
         [Authorize(Roles ="customer")]
         public ActionResult ListProjects()
         {
@@ -260,5 +261,131 @@ namespace PMS.Controllers
             return RedirectToAction("ListProjects");
         }
 
+
+        /*-----------------------------------(Nourhan)----------------------------------*/
+        /**********************************List project for MTL**********************************/
+        public ActionResult layout()  /*******************just for show layout*************/
+        {
+            return View();
         }
+
+        /*.............................List MTL's Current projects..........................*/
+        [HttpGet]
+        [Authorize(Roles = "MTL")]
+        public ActionResult ListCurrentPMTL()
+        {
+            var projects = getcurrentProjects().Where(y => y.leader_name.Equals(User.Identity.Name));
+            //CurrentPMTL C = new CurrentPMTL {
+            //    createProjects = projects
+            //};
+            return View(projects);
+        }
+
+        public IEnumerable<CreateProject> getcurrentProjects()
+        {
+            var p = db.CreateProjects.ToList().Where(y => y.state == "doing");
+            return p;
+        }
+
+        public ActionResult Leave(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CreateProject cp = db.CreateProjects.Find(id);
+            if (cp == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cp);
+        }
+
+        [HttpPost, ActionName("Leave")]
+        public ActionResult Confirm(int? id)
+        {
+            CreateProject cp = db.CreateProjects.Find(id);
+            cp.leader_name = "noleader";
+            db.Entry(cp).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ListCurrentPMTL");
+        }
+
+        /*.............................List MTL's Pervious projects..........................*/
+        [HttpGet]
+        [Authorize(Roles = "MTL")]
+        public ActionResult ListPerviousPMTL()
+        {
+            var project = getpervoiusProjects().Where(x => x.leader_name.Equals(User.Identity.Name));
+            return View(project);
+        }
+
+        public IEnumerable<CreateProject> getpervoiusProjects()
+        {
+            var p = db.CreateProjects.ToList().Where(y => y.state == "done");
+            return p;
+        }
+
+
+        /**********************************List project for MT**********************************/
+        public ActionResult layout2()  /*******************just for show layout*************/
+        {
+            return View();
+        }
+
+        /*.............................List MT's Current projects..........................*/
+        [HttpGet]
+        [Authorize(Roles = "MT")]
+        public ActionResult ListCurrentPMT()
+        {
+            var pro = db.CreateProjects.ToList();
+            var tm = db.teams.ToList();
+
+
+            CurrentPMTL C = new CurrentPMTL
+            {
+                tms = tm,
+                CurPros =pro
+            };
+            return View(C);
+        }
+
+        public IEnumerable<team> getcurrentProject()
+        {
+            var p = db.teams.ToList().Where(y => y.state == "doing");
+            return p;
+        }
+
+
+        /*.............................List MT's Pervious projects..........................*/
+        [HttpGet]
+        [Authorize(Roles = "MT")]
+        public ActionResult ListPerviousPMT()
+        {
+            var projects = getpervoiusProject().Where(x => x.memUname.Equals(User.Identity.Name));
+            return View(projects);
+        }
+
+        public IEnumerable<team> getpervoiusProject()
+        {
+            var p = db.teams.ToList().Where(y => y.state == "done");
+            return p;
+        }
+
+
+        /*===============================List project for MD ============================*/
+        [HttpGet]
+        [Authorize(Roles = "MD")]
+        public ActionResult ListMTLProject()
+        {
+            var cp = db.CreateProjects.ToList();
+            return View(cp);
+        }
+
+
+
+    }
+
+   
 }

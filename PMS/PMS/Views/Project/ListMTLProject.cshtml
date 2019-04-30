@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PMS.Models.CreateProject>
+
+@{
+    ViewBag.Title = "PMS";
+    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pro_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strt_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.end_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leader_name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pro_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strt_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.end_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.leader_name)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                </td>*@
+        </tr>
+    }
+
+</table>

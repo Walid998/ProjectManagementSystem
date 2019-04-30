@@ -1,0 +1,107 @@
+﻿@model PMS.Models.CurrentPMTL
+@{
+    ViewBag.Title = "ListCurrentPMT";
+    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+@if (!Model.tms.Any())
+{
+    <div style="padding-top:15%;">
+        <center>
+            <h>Sorry, no data to show ..</h><br />
+            <img src="~/Image/shy.gif" style="width:200px;height:200px;" />
+        </center>
+    </div>
+
+}
+
+
+
+else
+{
+    <h2>Hi @User.Identity.Name! .. Those projects are in process:</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.tms.project_name)*@
+            </th>
+        </tr>
+
+        @foreach (var item in Model.tms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.project_name)
+                    <input type="text" id="proId" name="id" value="@item.id" hidden />
+                </td>
+                <td>
+                    @*@Html.ActionLink("Leave", "Leave", new { id = item.id }, new { @class = "btn btn-danger" })*@
+                    <button type="button" class="btn btn-danger" id="leaveBtn" onclick="leave()">Leave</button>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal" data-target="#myModal">Details</button>
+
+
+}
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        @*Modal content*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details</h4>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.tms.project_name)*@
+                            </th>
+                            
+                        </tr>
+
+                        @foreach (var pro in Model.CurPros)
+                        {
+                            foreach (var tem in Model.tms)
+                            {
+                                if (tem.id == pro.team_id && pro.state.Equals("doing"))
+                                {
+                                    <tr>
+                                            
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function leave() {
+        var result = confirm("Are you sure you want to leave this project?")
+        if (result == true) {
+            $("#leaveBtn").attr("disabled", "true");
+            $("#leaveBtn").html("Waiting...");
+        }
+    }
+</script>

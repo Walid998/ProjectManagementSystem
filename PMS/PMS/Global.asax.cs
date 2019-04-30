@@ -16,7 +16,7 @@ namespace PMS
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);            
 
             SqlDependency.Start(@"data source=DESKTOP-EOBV2JQ\SQLEXPRESS;initial catalog=pmsEcommerce;integrated security=True");
             

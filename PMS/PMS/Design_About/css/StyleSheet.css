@@ -1,0 +1,27 @@
+﻿body { /*--
+	background:pink;
+	*/
+    background: url('../images/PMS.jpg') no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.conr{
+  margin-top:250px;
+  color:white;
+  padding-top:0px;
+  margin-top:0px;
+}
+
+
+.imag{
+    width:650px;
+    height:350px;
+    padding-top:0px;
+}
+
+.pm{
+    color:white;
+    font-weight: 900;
+    font-size:large;
+}
