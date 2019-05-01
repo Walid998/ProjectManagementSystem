@@ -21,7 +21,7 @@
         body {
             background-size: cover;
             font-style:oblique;
-            background: url(../../design_login/images/txt.jpg) no-repeat 62% 34%;
+            background: url(../../design_login/images/nour.jpg) no-repeat 62% 34%;
         }
         .container {
             margin: 40px
@@ -114,7 +114,7 @@
                     </a>
                 </li>
 
-                <li class="active">
+                @*<li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
                         User
@@ -129,18 +129,18 @@
 
                     </ul>
                 </li>
-                <!--Posts-->
+                Posts*@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-copy"></i>
-                        Posts
+                        Projects
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="~/Project/ListProjects">List</a>
+                            <a href="~/Project/ListManageProject">All PRojects</a>
                         </li>
                         <li>
-                            <a href="~/Project/AddProject">Add</a>
+                            <a href="~/Project/manage_project">Manage</a>
                         </li>
 
                     </ul>
@@ -186,7 +186,7 @@
                     </li>
                 }
 
-                @if (ViewContext.HttpContext.User.IsInRole("MD"))
+                @*@if (ViewContext.HttpContext.User.IsInRole("MD"))
                 {
                     <li>
                         <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -202,9 +202,9 @@
                             </li>
                         </ul>
                     </li>
-                }
+                }*@
 
-                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                @if (ViewContext.HttpContext.User.IsInRole("admin"))
                 {
                     <li>
                         <a href="#">
@@ -214,23 +214,12 @@
                     </li>
                 }
                 <!-------------------------------------------------------------------->
-                <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question"></i>
-                        FAQ
-                    </a>
-                </li>
+                
                 <li>
 
                 </li>
 
-                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                @if (ViewContext.HttpContext.User.IsInRole("admin"))
                 {
                     <li>
                         <a href="#">

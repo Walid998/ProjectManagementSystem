@@ -19,7 +19,6 @@ namespace PMS.Models
         public user()
         {
             this.CreateProjects = new HashSet<CreateProject>();
-            this.feedbacks = new HashSet<feedback>();
             this.notfications = new HashSet<notfication>();
             this.projects = new HashSet<project>();
             this.projectAssigns = new HashSet<projectAssign>();
@@ -28,8 +27,9 @@ namespace PMS.Models
             this.teams = new HashSet<team>();
             this.teams1 = new HashSet<team>();
             this.teams2 = new HashSet<team>();
+            this.feedbacks = new HashSet<feedback>();
         }
-    
+
         public int id { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
@@ -42,8 +42,6 @@ namespace PMS.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreateProject> CreateProjects { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<feedback> feedbacks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<notfication> notfications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -61,5 +59,7 @@ namespace PMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<team> teams2 { get; set; }
         public virtual userType userType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<feedback> feedbacks { get; set; }
     }
 }

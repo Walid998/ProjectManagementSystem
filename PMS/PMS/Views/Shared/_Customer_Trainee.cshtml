@@ -137,24 +137,31 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <span>Projects</span>
-                            <div class="dropdown-content">
-                                <a href="~/Project/ListCurrentPMT">Current</a>
-                                <a href="~/Project/ListPerviousPMT">Pervious</a>
-                                <a href="#">Requested</a>
+                    @if (ViewContext.HttpContext.User.IsInRole("customer"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Project/ListProjects">Home</a>
+                        </li>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("MT"))
+                    {
+                        <li>
+                            <div class="dropdown">
+                                <span>Projects</span>
+                                <div class="dropdown-content">
+                                    <a href="~/Project/ListCurrentPMT">Current</a>
+                                    <a href="~/Project/ListPerviousPMT">Pervious</a>
+                                    <a href="#">Requested</a>
+                                </div>
                             </div>
-                        </div>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Diagram/Index">Pie Chart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="~/Home/About">About</a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +179,9 @@
                 </button>
             </div>
           
-            @{Html.RenderAction("ProfInfo", "profilepage");}
+            @if(!(User.Identity.Name.Equals(""))){ 
+             Html.RenderAction("ProfInfo", "profilepage");
+            }
 
         </nav>
 

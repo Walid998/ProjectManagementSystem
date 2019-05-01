@@ -51,5 +51,41 @@ namespace PMS.Controllers
         }
 
 
+
+        public ActionResult hme()
+        {
+            var projects = db.projectAssigns.Where(x => x.project.stat == "to do" && x.name_dm.Equals(User.Identity.Name)).ToList();
+
+            return View(projects);
+
+        }
+
+        public ActionResult Home()
+        {
+
+            var projects = db.projectAssigns.Where(x => x.project.stat == "to do" && x.name_dm.Equals(User.Identity.Name)).ToList();
+
+            return View(projects);
+        }
+        
+
+        public ActionResult assign(int id)
+        {
+            projectAssign project = db.projectAssigns.Find(id);
+            project.project.stat = "doing";
+            db.SaveChanges();
+            return View("Index");
+        }
+
+        public ActionResult Reject(int id)
+        {
+            projectAssign project = db.projectAssigns.Find(id);
+            db.projectAssigns.Remove(project);
+            db.SaveChanges();
+            return View("Index");
+        }
+
+
+
     }
 }

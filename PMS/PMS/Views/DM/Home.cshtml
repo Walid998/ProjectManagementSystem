@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PMS.Models.projectAssign>
+
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<h2>home</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.project.cust_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.project.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.project.descrption)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.project.cust_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.project.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.project.descrption)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Accept", "assign", new { id = item.id }, new { @class = "btn btn-primary btn-large" }) |
+                @Html.ActionLink("Reject", "Delete", new { id = item.id }, new { @class = "btn btn-primary btn-large" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,11 +1,17 @@
 ﻿
 @{
     ViewBag.Title = "Test";
-    Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+    if (User.IsInRole("admin") || User.IsInRole("MTL") || User.IsInRole("MD")) {
+        Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+    }
+    if (User.IsInRole("MT") || User.IsInRole("customer")) {
+        Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+    }
+
 
 }
 
-<h2>Test</h2>
+<h2>MY NOTIFICATION</h2>
 <div>
     <div class="notification-icon" style="margin-top:10px">
         <span class="glyphicon glyphicon-envelope " style="font-size:25px"></span>

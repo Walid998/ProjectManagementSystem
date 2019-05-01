@@ -185,6 +185,9 @@
     </Compile>
     <Compile Include="Hubs\MyNewHub.cs" />
     <Compile Include="Interface1.cs" />
+    <Compile Include="Models\contact.cs">
+      <DependentUpon>ModelSecond.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateProject.cs">
       <DependentUpon>ModelSecond.tt</DependentUpon>
     </Compile>
@@ -251,6 +254,7 @@
     <Content Include="design_login\images\Background.jpg" />
     <Content Include="design_login\images\bg3.jpg" />
     <Content Include="design_login\images\mail.png" />
+    <Content Include="design_login\images\nour.jpg" />
     <Content Include="design_login\images\pass.png" />
     <Content Include="Design_About\images\PMS.jpg" />
     <Content Include="design_login\index.html" />
@@ -312,7 +316,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_admin_MD_TL.cshtml" />
     <Content Include="Views\Shared\_Customer_Trainee.cshtml" />
@@ -362,11 +365,14 @@
     <Content Include="Views\Project\ListMTLProject.cshtml" />
     <Content Include="Views\Project\ListPerviousPMT.cshtml" />
     <Content Include="Views\Project\ListPerviousPMTL.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Account\ForgetPassword.cshtml" />
+    <Content Include="Views\DM\test.cshtml" />
+    <Content Include="Views\DM\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\B\" />
     <Folder Include="Views\Factory\" />
     <Folder Include="Views\Main\" />
     <Folder Include="Views\MD\" />

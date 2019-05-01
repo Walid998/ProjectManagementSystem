@@ -1,7 +1,25 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+    if (User.IsInRole("admin"))
+    { Layout = "~/Views/Shared/_admin_MD_TL.cshtml"; }
+
+    else if (User.IsInRole("MD"))
+    {
+        Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+    }
+    else if (User.IsInRole("MTL"))
+    {
+        Layout = "~/Views/Shared/_admin_MD_TL.cshtml";
+    }
+    else if (User.IsInRole("MT"))
+    {
+        Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Customer_Trainee.cshtml";
+    }
 }
 
 <h2>Index</h2>

@@ -10,7 +10,7 @@
             </div></a>
         </li>
         <li style="display:inline-block">
-            @Html.ActionLink("Hello " + User.Identity.Name + " " + " ", "#", "profilepage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            Hello @User.Identity.Name
         </li>
 
         <li style="display:inline-block"><a href="@Url.Action("SignOut","Account")"> | Log off</a></li>

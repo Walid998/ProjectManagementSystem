@@ -33,19 +33,26 @@ else
             </th>
         </tr>
 
-        @foreach (var item in Model.tms)
+        @foreach (var pro in Model.CurPros)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.project_name)
-                    <input type="text" id="proId" name="id" value="@item.id" hidden />
-                </td>
-                <td>
-                    @*@Html.ActionLink("Leave", "Leave", new { id = item.id }, new { @class = "btn btn-danger" })*@
-                    <button type="button" class="btn btn-danger" id="leaveBtn" onclick="leave()">Leave</button>
+            foreach (var item in Model.tms)
+            {
 
-                </td>
-            </tr>
+                if (item.project_name == pro.pro_name && pro.state.Equals("doing") && item.member_name == User.Identity.Name)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.project_name)
+                            <input type="text" id="proId" name="id" value="@item.id" hidden />
+                        </td>
+                        <td>
+                            @*@Html.ActionLink("Leave", "Leave", new { id = item.id }, new { @class = "btn btn-danger" })*@
+                            <button type="button" class="btn btn-danger" id="leaveBtn" onclick="leave()">Leave</button>
+
+                        </td>
+                    </tr>
+                }
+            }
         }
 
     </table>
@@ -71,17 +78,32 @@ else
                             <th>
                                 @*@Html.DisplayNameFor(model => model.tms.project_name)*@
                             </th>
-                            
+
                         </tr>
 
                         @foreach (var pro in Model.CurPros)
                         {
                             foreach (var tem in Model.tms)
                             {
-                                if (tem.id == pro.team_id && pro.state.Equals("doing"))
+
+                                if (tem.project_name == pro.pro_name && pro.state.Equals("doing") && tem.member_name == User.Identity.Name)
                                 {
                                     <tr>
-                                            
+                                        <td>
+                                            @tem.project_name
+                                        </td>
+                                        <td>
+                                            @pro.leader_name
+                                        </td>
+                                        <td>
+                                            @pro.price
+                                        </td>
+                                        <td>
+                                            @pro.strt_date
+                                        </td>
+                                        <td>
+                                            @pro.end_date
+                                        </td>
                                     </tr>
                                 }
                             }
