@@ -58,14 +58,19 @@ namespace PMS.Controllers
         }
         public ActionResult Register()
         {
-            return View();
+            var item = db.userTypes.ToList().Where(x => x.typ != "admin");
+            user p = new user
+            {
+                types = item
+            };
+            return View(p);
         }
         [HttpPost]
         public ActionResult Register(user reg, string name)
         {
             if (reg.Username != null)
             {
-                reg.Role = "customer";
+                
                 string fileName = Path.GetFileNameWithoutExtension(reg.Upload.FileName);
                 string extension = Path.GetExtension(reg.Upload.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;

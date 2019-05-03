@@ -369,6 +369,7 @@
     <Content Include="Views\Account\ForgetPassword.cshtml" />
     <Content Include="Views\DM\test.cshtml" />
     <Content Include="Views\DM\Home.cshtml" />
+    <Content Include="Views\Home\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppFile\Images\" />

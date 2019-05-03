@@ -115,21 +115,21 @@
                 </li>
 
                 @*<li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
-                        User
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="~/Users/ListAllUsers">List</a>
-                        </li>
-                        <li>
-                            <a href="~/Users/AddUser">Add</a>
-                        </li>
-
-                    </ul>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-home"></i>
+                User
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="~/Users/ListAllUsers">List</a>
                 </li>
-                Posts*@
+                <li>
+                    <a href="~/Users/AddUser">Add</a>
+                </li>
+
+            </ul>
+        </li>
+        Posts*@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-copy"></i>
@@ -164,7 +164,7 @@
 
 
                 <!--Project-->
-                @if (ViewContext.HttpContext.User.IsInRole("MTL"))
+                @if (!ViewContext.HttpContext.User.IsInRole("admin"))
                 {
                     <li>
                         <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -187,24 +187,24 @@
                 }
 
                 @*@if (ViewContext.HttpContext.User.IsInRole("MD"))
-                {
+        {
+            <li>
+                <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-copy"></i>
+                    Project
+                </a>
+                <ul class="collapse list-unstyled" id="projectSubmenu">
                     <li>
-                        <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <i class="fas fa-copy"></i>
-                            Project
-                        </a>
-                        <ul class="collapse list-unstyled" id="projectSubmenu">
-                            <li>
-                                <a href="~/Project/ListMTLProject">Marketting Team Leader</a>
-                            </li>
-                            <li>
-                                <a href="#">Marketting Team Member</a>
-                            </li>
-                        </ul>
+                        <a href="~/Project/ListMTLProject">Marketting Team Leader</a>
                     </li>
-                }*@
+                    <li>
+                        <a href="#">Marketting Team Member</a>
+                    </li>
+                </ul>
+            </li>
+        }*@
 
-                @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                @if (!ViewContext.HttpContext.User.IsInRole("admin"))
                 {
                     <li>
                         <a href="#">
@@ -214,23 +214,52 @@
                     </li>
                 }
                 <!-------------------------------------------------------------------->
-                
+
                 <li>
 
                 </li>
 
-                @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                @if (!(ViewContext.HttpContext.User.IsInRole("admin")))
                 {
                     <li>
-                        <a href="#">
+                        <a href="/Home/contact">
                             <i class="fas fa-paper-plane"></i>
                             Contact
                         </a>
                     </li>
-                
+
 
                 }
-                    
+
+                @if ((ViewContext.HttpContext.User.IsInRole("admin")))
+                {
+                    <li>
+                        <a href="/Home/Display">
+                            <i class="fas fa-paper-plane"></i>
+                            Messages
+                        </a>
+                    </li>
+
+
+                }
+                @if ((ViewContext.HttpContext.User.IsInRole("MD")))
+                {
+                    <li>
+                        <a href="/DM/Home">
+                            <i class="fas fa-paper-plane"></i>
+                            Assigns
+                        </a>
+                    </li>
+
+
+                }
+                @if (!(ViewContext.HttpContext.User.IsInRole("admin")))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Diagram/Index">Pie Chart</a>
+                    </li>
+                }
+
             </ul>
 
             <ul class="list-unstyled CTAs">

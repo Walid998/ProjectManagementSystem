@@ -143,6 +143,12 @@
                             <a class="nav-link" href="/Project/ListProjects">Home</a>
                         </li>
                     }
+                    @if (!(ViewContext.HttpContext.User.IsInRole("admin")))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/contact">Contact</a>
+                        </li>
+                    }
                     @if (ViewContext.HttpContext.User.IsInRole("MT"))
                     {
                         <li>
@@ -156,10 +162,12 @@
                             </div>
                         </li>
                     }
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Diagram/Index">Pie Chart</a>
-                    </li>
+                    @if (!(ViewContext.HttpContext.User.IsInRole("customer")))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Diagram/Index">Pie Chart</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link" href="~/Home/About">About</a>
                     </li>

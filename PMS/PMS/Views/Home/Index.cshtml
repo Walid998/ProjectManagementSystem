@@ -5,6 +5,11 @@
 <div class="row">
     @if (User.Identity.IsAuthenticated)
     {
+        if (User.IsInRole("admin"))
+        {
+            <script language='javascript' type='text/javascript'>window.location.replace('/Home/Display');</script>
+
+        }
         <h2>Welcome user : @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "guest")</h2>
     }
     
